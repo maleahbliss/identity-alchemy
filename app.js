@@ -1,4 +1,5 @@
-// Identity Alchemy - Master Alchemical Engine v4.1 (Deep Context Fixed)
+// Identity Alchemy - Universal Master Alchemical Engine v4.2
+// This engine is generic. Personal data is loaded from demoData.js (Private).
 
 const GlobalLibrary = {
     spiritual: {
@@ -24,7 +25,7 @@ const GlobalLibrary = {
     vocational: {
         questions: ["What tasks feel unworthy of your brilliance?", "Where are you 'masking' to fit a professional role?", "Describe effortless leadership."],
         options: [
-            { id: 'vo1', text: "I am the Sovereign Leader of Impact. My leadership in the Council and my business is an organic extension of my natural resonance." },
+            { id: 'vo1', text: "I am the Sovereign Leader of Impact. My leadership is an organic extension of my natural resonance and presence." },
             { id: 'vo2', text: "I lead from a place of raw, inspired Presence. 'Masking' is replaced by my authentic authority, which naturally inspires everyone I meet." },
             { id: 'vo3', text: "I handle responsibility with the weightlessness of a master. My systems manage the 'boring' while I occupy the 'brilliant' zone of my genius." },
             { id: 'vo4', text: "My vocational path is one of sustainable influence. I am an inspiration to everyone, leading without effort and resting without guilt." },
@@ -34,7 +35,7 @@ const GlobalLibrary = {
     wealth: {
         questions: ["Why does money feel like manual effort?", "Where are you bored with income maintenance?", "What does 0% micromanaged wealth feel like?"],
         options: [
-            { id: 'we1', text: "I am a Magnet for Infinite Wealth. I curate streams of value—TikTok, Amazon, and beyond—that work with relentless efficiency while I create." },
+            { id: 'we1', text: "I am a Magnet for Infinite Wealth. I curate streams of value that work with relentless efficiency while I create." },
             { id: 'we2', text: "My financial reality is tied to the potency of my ideas, not the hours of my time. My wealth compounding without my manual intervention." },
             { id: 'we3', text: "I am the Abundance Architect. My money works for me, creating absolute freedom for adventures, travel, and the pursuit of excellence." },
             { id: 'we4', text: "I move from 'trying' to 'following'. Abundance is my natural state, and I accept it with the authority of the financially sovereign." },
@@ -42,27 +43,27 @@ const GlobalLibrary = {
         ]
     },
     physical: {
-        questions: ["Describe your prime physical state.", "Where is your body signaling old stories (TBI/Accident)?", "What biological sovereignty are you reclaiming right now?"],
+        questions: ["Describe your prime physical state.", "Where is your body signaling old stories?", "What biological sovereignty are you reclaiming?"],
         options: [
             { id: 'ph1', text: "I am Radiantly Vital. My body is a biological masterpiece of regeneration, bypassing history to reclaim the strength of my prime." },
-            { id: 'ph2', text: "I move with the stability and fluidity of a 20-year-old athlete. Every cell is vibrating with the frequency of perfect health." },
+            { id: 'ph2', text: "I move with the stability and fluidity of an athlete in flow. Every cell is vibrating with the frequency of perfect health." },
             { id: 'ph3', text: "My mobility is restored, and my body injury is alchemized into insight. I dance through life with an inexhaustible, restorative energy." },
-            { id: 'ph4', text: "I am the Physical Embodiment of Perfection. Peptides, herbs, and discipline are the physical markers of my internal biological sovereignty." },
+            { id: 'ph4', text: "I am the Physical Embodiment of Perfection. My discipline is the physical marker of my internal biological sovereignty." },
             { id: 'ph5', text: "I am Vitally Energized. My body is a resilient temple that supports my genius with tireless stamina and high-vibrational recovery." }
         ]
     },
     familial: {
-        questions: ["Describe the friction in your most intimate connection.", "How do your kids respond to your new identity?", "What 'maternal load' are you ready to release?"],
+        questions: ["Describe the friction in your most intimate connection.", "How do your kids respond to your new identity?", "What 'household load' are you ready to release?"],
         options: [
             { id: 'fa1', text: "I am a Magnetic Sovereign Partner. I am sexually vibrant and emotionally independent, building a sanctuary of mutual respect." },
             { id: 'fa2', text: "I release the need to regulate others. I trust that my light is enough to lead my family home, where everyone leads themselves." },
             { id: 'fa3', text: "Our home is a sanctuary of mutual regulation and deep connection. I am loved for my presence, not my ability to manage the junk." },
-            { id: 'fa4', text: "My children see a mother who is grounded and inspired. They naturally model my clarity, creating a household of sovereign joy." },
+            { id: 'fa4', text: "My children see a model of resonance, which they naturally follow. We create a household of sovereign joy." },
             { id: 'fa5', text: "I stand as the heart of a harmonious home, where my relationships are characterized by deep present connection and shared vision." }
         ]
     },
     social: {
-        questions: ["Where are you holding back your 'memorable' voice?", "What does inspiration without burnout look like?", "Who are you without the 'Mask'?"],
+        questions: ["Where are you holding back your voice?", "What does inspiration without burnout look like?", "Who are you without the 'Mask'?"],
         options: [
             { id: 'so1', text: "I am Organically Memorable. My influence is a natural field I carry with me into every room, inspiring others without performance." },
             { id: 'so2', text: "I am Radiantly Bold. I occupy space with confidence and grace, offering my unique frequency freely and without fear of burnout." },
@@ -78,35 +79,43 @@ const State = {
     pillarIndex: 0,
     questionIndex: 0,
     isRecording: false,
-    userData: JSON.parse(localStorage.getItem('id_alchemy_v4_1')) || {
+    userData: null
+};
+
+function resetState() {
+    State.userData = {
         pillars: Object.keys(GlobalLibrary).map(id => ({
             id, name: id.charAt(0).toUpperCase() + id.slice(1),
             venting: ["", "", ""], selections: []
         }))
-    }
-};
+    };
+    saveData();
+}
 
-// --- Operations ---
-function saveData() { localStorage.setItem('id_alchemy_v4_1', JSON.stringify(State.userData)); }
+function saveData() { localStorage.setItem('id_alchemy_v4_2', JSON.stringify(State.userData)); }
+
+if (!localStorage.getItem('id_alchemy_v4_2')) resetState();
+else State.userData = JSON.parse(localStorage.getItem('id_alchemy_v4_2'));
+
+// --- Navigation ---
 window.switchTo = (v) => { 
     State.view = v; 
     const main = document.getElementById('main-content');
     if (v === 'welcome') State.pillarIndex = 0;
-    if (Views[v]) {
-        main.innerHTML = Views[v](); 
-        if (v === 'unloading') { window.scrollTo(0,0); }
-    }
+    if (Views[v]) main.innerHTML = Views[v](); 
 };
 
+// --- Simulation Mode (Private) ---
 window.simulateUserSession = () => {
+    if (!window.myPrivateData) return alert("Private Data not found. Ensure demoData.js exists locally.");
     const p = State.userData.pillars;
-    p[0].venting = ["Honestly my spiritual life is in a good space. Goddard and Ruiz studies. Artist's Way morning pages.", "Redesigning my room to match my artwork.", "Moving from 'hoping' to 'knowing' what I want."];
-    p[1].venting = ["Stuck in creation mode. Cool ideas but no next steps.", "Tech frustration. Blocking apps for kids and myself.", "Want to sell my art and herbalism expertise."];
-    p[2].venting = ["Distracted by social media easily.", "Biggest friction is not knowing the next steps.", "Want to take working products to market automatically."];
-    p[3].venting = ["Tired of not making money from ideas.", "Want affiliate automation via TikTok and Amazon.", "Want money to work for me for England whiskeys."];
-    p[4].venting = ["6 years post car accident. Ruptured discs, TBI, POTS.", "ADHD/Autism/EDS. Lost 70lbs since June.", "Peptides and Herbs for restoration."];
-    p[5].venting = ["Relationship with Eric is up and down. Emotional stress.", "Don't want to be his mother or household regulator.", "Kids respond well to me, but want home full time."];
-    p[6].venting = ["Salt Lake County Council race at large seat.", "Am I a machine or an inspiration? Fear of masking burnout.", "Sustainability of my leadership voice."];
+    p[0].venting = window.myPrivateData.spiritual;
+    p[1].venting = window.myPrivateData.mental;
+    p[2].venting = window.myPrivateData.vocational;
+    p[3].venting = window.myPrivateData.wealth;
+    p[4].venting = window.myPrivateData.physical;
+    p[5].venting = window.myPrivateData.familial;
+    p[6].venting = window.myPrivateData.social;
     saveData(); 
     State.pillarIndex = 0;
     window.switchTo('alchemy');
@@ -125,21 +134,8 @@ const VoiceController = {
             const el = document.getElementById('main-input');
             if (el) { el.value += (el.value ? ' ' : '') + t; el.scrollTop = el.scrollHeight; }
         };
-        recognition.onstart = () => { 
-            const d = document.getElementById('mic-status-dot');
-            const t = document.getElementById('mic-status-text');
-            if(d) d.className='online'; if(t) t.innerText='Hearing You'; 
-        };
-        recognition.onend = () => { 
-            if (State.isRecording) setTimeout(() => recognition.start(), 250); 
-            else { 
-                const d = document.getElementById('mic-status-dot');
-                const t = document.getElementById('mic-status-text');
-                if(d) d.className=''; if(t) t.innerText='Idle'; 
-            } 
-        };
-        recognition.onsoundstart = () => document.getElementById('mic-waveform')?.classList.add('active');
-        recognition.onsoundend = () => document.getElementById('mic-waveform')?.classList.remove('active');
+        recognition.onstart = () => { document.getElementById('mic-status-dot').className='online'; document.getElementById('mic-status-text').innerText='Hearing You'; };
+        recognition.onend = () => { if (State.isRecording) setTimeout(() => recognition.start(), 250); else { document.getElementById('mic-status-dot').className=''; document.getElementById('mic-status-text').innerText='Idle'; } };
     }
 };
 
@@ -171,10 +167,10 @@ const Views = {
     welcome: () => `
         <div class="hero">
             <h1>Identity Alchemy</h1>
-            <p class="subtitle">The Universal Shift Engine.</p>
+            <p class="subtitle">A Transformative 7-Pillar Engine.</p>
             <div style="display:flex; gap:1rem; justify-content:center;">
-                <button class="cta-btn" onclick="window.switchTo('unloading')">Fresh Start</button>
-                <button class="cta-btn" style="background:var(--secondary);" onclick="window.simulateUserSession()">Simulate My Session</button>
+                <button class="cta-btn" onclick="window.switchTo('unloading')">Begin Journey</button>
+                <button class="cta-btn" style="background:var(--secondary); display:${window.myPrivateData ? 'block' : 'none'}" onclick="window.simulateUserSession()">Simulate My Session</button>
             </div>
         </div>
     `,
@@ -184,10 +180,10 @@ const Views = {
             <div class="glass-card">
                 <div class="progress-bar-container"><div class="progress-fill" style="width:${((State.pillarIndex * 3 + State.questionIndex + 1) / 21) * 100}%"></div></div>
                 <h2>Unloading: ${pillar.name}</h2>
-                <p class="form-desc" style="font-size:1.3rem; min-height:4rem;">${GlobalLibrary[pillar.id].questions[State.questionIndex]}</p>
+                <p class="form-desc" style="font-size:1.3rem;">${GlobalLibrary[pillar.id].questions[State.questionIndex]}</p>
                 <textarea id="main-input" placeholder="Narrate your response...">${pillar.venting[State.questionIndex]}</textarea>
                 <div class="voice-controls">
-                    <button class="mic-btn ${State.isRecording ? 'recording' : ''}" onclick="State.isRecording = !State.isRecording; VoiceController.init(); State.isRecording ? (recognition.start()) : (recognition.stop()); window.switchTo('unloading');">
+                    <button class="mic-btn ${State.isRecording ? 'recording' : ''}" onclick="State.isRecording = !State.isRecording; VoiceController.init(); State.isRecording ? recognition.start() : recognition.stop(); window.switchTo('unloading');">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
                     </button>
                     <button class="cta-btn" onclick="handleNext()">Continue</button>
