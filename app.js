@@ -369,6 +369,7 @@ function synthesizeNarrative(p) {
     
     // Adaptive Metaphor detection from context
     const { avatar, sanctuary } = MetaphorFactory.detect(visionRaw + " " + p.venting);
+    const inquiries = PowerInquiryLibrary[p.id] || [];
 
     let script = "";
 
@@ -376,47 +377,47 @@ function synthesizeNarrative(p) {
         script += `PART I: THE VISIONARY MEDITATION\n\n`;
         
         if (p.id === 'spiritual') {
-            script += `I take the sacred time to directly connect with the source of all things. I am a Timeless Being, moving with absolute focus and effortless momentum. I am eternally connected to the divine tapestry of God and infinity, receiving direct wisdom in every moment.\n\n`;
-            script += `Whenever I feel the old pull of struggle or the static of uncertainty, I pause and fall back into the depth of my peaceful expansion. I have direct access to intuition because I AM the source of it, and I choose to lead from my most authentic presence.\n\n`;
-            script += `I release the friction of the old story. I do not focus on the smoke of external hardship; I focus on the signal of my own expansion. I ask the powerful question: "What if everything were to work perfectly?" and I allow that luminous certainty to guide my daily creation.\n\n`;
-            script += `I am the master of my morning and the architect of my day. I lead from the depth of my being, my impact a natural byproduct of my unshakeable faith and radical peace.\n\n`;
-            script += `I am the river and the ocean, moving in the seamless current of universal energy. My reality is a symphony of balance, resonating with the frequency of absolute spirit.\n\n`;
+            script += `I take the sacred time to directly connect with the source of all things. I am a Timeless Being, moving with absolute focus and effortless momentum. Why is my connection to the infinite so effortless and direct?\n\n`;
+            script += `I am eternally connected to the divine tapestry of God and infinity, receiving direct wisdom in every moment. Whenever I feel the old pull of struggle or the static of uncertainty, I pause and fall back into the depth of my peaceful expansion. How and I so lucky to experience such absolute spirit in my daily life?\n\n`;
+            script += `I have direct access to intuition because I AM the source of it, and I choose to lead from my most authentic presence. I release the friction of the old story. Why does the source of all things flow through me with such luminous certainty?\n\n`;
+            script += `I do not focus on the smoke of external hardship; I focus on the signal of my own expansion. I ask the powerful question: "What if everything were to work perfectly?" and I allow that luminous certainty to guide my daily creation. How can it get even better than this absolute peace?\n\n`;
+            script += `I am the master of my morning and the architect of my day. I lead from the depth of my being, my impact a natural byproduct of my unshakeable faith and radical peace. Why am I the perfect channel for universal wisdom?\n\n`;
         } else if (p.id === 'mental') {
-            script += `I am the Architect of my own focus and the Master of my mental engine. I possess the clarity of high-frequency focus, seeing the geometry of reality with effortless precision and masterful execution.\n\n`;
-            script += `I am a Visionary leader who has an executive presence that creates enduring Legacy impact. I move with strategic command, my presence alone shifting the landscape of my reality into a fortress of peace and unshakeable concentration.\n\n`;
-            script += `I create radical value for the entire globe. My contribution flows with effortless momentum, a natural byproduct of my authentic authority and natural presence. Ideas and solutions come to me with profound ease, for I have mastered the alchemical balance between intention and surrender.\n\n`;
-            script += `I produce Savant-level output with the ease of high-frequency thought. I know what I am creating, I know what I want, and I know exactly how to make it happen. I am the observer of my thoughts, choosing only those that fuel my expansion.\n\n`;
-            script += `I attract masses of money and monetary wealth because of the massive impact I lead. I create exactly what the world needs, and the universe happily rewards me with abundance. I am the master of my morning and the architect of my day, leading from my most authentic brilliance.\n\n`;
+            script += `I am the Architect of my own focus and the Master of my mental engine. I possess the clarity of high-frequency focus, seeing the geometry of reality with effortless precision and masterful execution. Why am I so masterful at identifying the signal in the noise?\n\n`;
+            script += `I am a Visionary leader who has an executive presence that creates enduring Legacy impact. I move with strategic command, my presence alone shifting the landscape of my reality into a fortress of peace and unshakeable concentration. How and I so lucky to possess such high-resolution focus and savant insight?\n\n`;
+            script += `I create radical value for the entire globe. My contribution flows with effortless momentum, a natural byproduct of my authentic authority and natural presence. Why does my mind operate with such profound intellectual ease?\n\n`;
+            script += `Ideas and solutions come to me with profound ease, for I have mastered the alchemical balance between intention and surrender. How can my strategic command expand even further today?\n\n`;
+            script += `I produce Savant-level output with the ease of high-frequency thought. I know what I am creating, I know what I want, and I know exactly how to make it happen. I am the observer of my thoughts, choosing only those that fuel my expansion. Why is my focus such an unshakeable light for the world?\n\n`;
         } else if (p.id === 'vocational') {
-            script += `I lead from the depth of my being, my impact a natural byproduct of my authenticity. I claim my place at the table with the quiet confidence of a master, moving with authentic authority and natural presence.\n\n`;
-            script += `My professional impact is a result of my authentic presence. I occupy only those spaces that resonate with my primal root, allowing my true zone of genius to shine without performance or mask.\n\n`;
-            script += `My contribution flows effortlessly into the world, creating massive, radical value for the entire globe. I am a visionary leader who pulls the future into the now through the power of my declaration.\n\n`;
-            script += `I produce work of exceptional quality with the ease of high-frequency focus. Every act of execution is a flawless expression of my savant-level output, leading others through the magnetism of my purpose.\n\n`;
-            script += `I move toward my legacy with the momentum of unshakeable intent. My work is a sanctuary of focus and fulfillment, creating a weightless impact that ripples out into the infinite tapestry of humanity.\n\n`;
+            script += `I lead from the depth of my being, my impact a natural byproduct of my authenticity. I claim my place at the table with the quiet confidence of a master, moving with authentic authority and natural presence. Why does my work create such radical value for the entire globe?\n\n`;
+            script += `My professional impact is a result of my authentic presence. I occupy only those spaces that resonate with my primal root, allowing my true zone of genius to shine without performance or mask. How and I so lucky to lead with such authentic authority and natural presence?\n\n`;
+            script += `My contribution flows effortlessly into the world, creating massive, radical value for the entire globe. Why does the world reward my visionary leadership with such massive impact?\n\n`;
+            script += `I am a visionary leader who pulls the future into the now through the power of my declaration. I produce work of exceptional quality with the ease of high-frequency focus. How can my professional flow get even better than this?\n\n`;
+            script += `Every act of execution is a flawless expression of my savant-level output, leading others through the magnetism of my purpose. I move toward my legacy with the momentum of unshakeable intent. Why am I so masterful at execution and legacy creation?\n\n`;
         } else if (p.id === 'wealth') {
-            script += `My financial life is a fortress of peace, security, and absolute autonomy. I release all friction around money, allowing abundance to flow in its natural current into my financial sanctuary.\n\n`;
-            script += `I am a magnet for wealth, seeing the opportunity for expansion in every moment. My reality is an infinite field of resources, always providing for my highest good with relaxed prosperity.\n\n`;
-            script += `I claim the divine right to own my time and direct my life with total freedom. My wealth is the engine of my absolute autonomy, allowing me to live a time-rich life of unmasked honesty.\n\n`;
-            script += `Value flows to me in high-resolution streams, independent of struggle. I transmute my highest brilliance into the gold of measurable impact, supported by the infinite bounty of my creations.\n\n`;
-            script += `I direct my resources with the precision of a master architect. I walk in the certainty that my needs are met before I even ask, living in the flow of universal abundance.\n\n`;
+            script += `My financial life is a fortress of peace, security, and absolute autonomy. I release all friction around money, allowing abundance to flow in its natural current into my financial sanctuary. Why am I so good at making, keeping, and multiplying money?\n\n`;
+            script += `I am a magnet for wealth, seeing the opportunity for expansion in every moment. My reality is an infinite field of resources, always providing for my highest good with relaxed prosperity. Why does abundance flow so naturally and effortlessly to me?\n\n`;
+            script += `I claim the divine right to own my time and direct my life with total freedom. My wealth is the engine of my absolute autonomy, allowing me to live a time-rich life of unmasked honesty. How and I so lucky to live in such financial sanctuary and time-rich autonomy?\n\n`;
+            script += `Value flows to me in high-resolution streams, independent of struggle. I transmute my highest brilliance into the gold of measurable impact, supported by the infinite bounty of my creations. How can it get even better than this infinite prosperity?\n\n`;
+            script += `I direct my resources with the precision of a master architect. I walk in the certainty that my needs are met before I even ask, living in the flow of universal abundance. Why is my wealth such a powerful engine for my absolute freedom?\n\n`;
         } else if (p.id === 'physical') {
-            script += `My body is a high-resolution vessel for my soul’s expansion. I am the architect of my own physical prime, radiating prime vitality and youthful energy.\n\n`;
-            script += `I move through the world with the grace and speed of a ${avatar}. My physical foundation is a sanctuary of alignment and strength, fueled by my connection to the source.\n\n`;
-            script += `I perform at my physical peak with the ease of focused presence. My body heals and renews itself in the stillness of my absolute peace, manifesting vibrant resilience.\n\n`;
-            script += `I honor my body as a sacred expression of universal intelligence. My stamina is an infinite well, carrying me through my work with kinetic ease and neuromuscular precision.\n\n`;
-            script += `I am the master of my physical habits, leading from my most authentic self. I embody the light of truth in every cell, existing in a state of biological masterpiece.\n\n`;
+            script += `My body is a high-resolution vessel for my soul’s expansion. I am the architect of my own physical prime, radiating prime vitality and youthful energy. Why does my body heal and renew itself with such effortless speed?\n\n`;
+            script += `I move through the world with the grace and speed of a ${avatar}. My physical foundation is a sanctuary of alignment and strength, fueled by my connection to the source. How and I so lucky to possess such prime vitality and youthful energy?\n\n`;
+            script += `I perform at my physical peak with the ease of focused presence. My body heals and renews itself in the stillness of my absolute peace, manifesting vibrant resilience. Why is my physical vessel such a high-resolution masterpiece of health?\n\n`;
+            script += `I honor my body as a sacred expression of universal intelligence. My stamina is an infinite well, carrying me through my work with kinetic ease and neuromuscular precision. How can my kinetic ease and biological strength expand even more?\n\n`;
+            script += `I am the master of my physical habits, leading from my most authentic self. I embody the light of truth in every cell, existing in a state of biological masterpiece. Why am I the master of my internal chemistry and absolute prime?\n\n`;
         } else if (p.id === 'familial') {
-            script += `My home is a fortress of absolute peace and relational stillness. I am the anchor of calm in the midst of any domestic storm, creating a sanctuary of peace for all who enter.\n\n`;
-            script += `I build my relationships with the geometry of universal harmony. I listen from the depth of my being, creating deep emotional safety and domestic autonomy for my loved ones.\n\n`;
-            script += `My connection to my family is an unshakeable current of silent understanding. We are a symphony of individuals, moving in the flow of oneness and mutually supportive growth.\n\n`;
-            script += `I guide the next generation through the power of my own expansion. My home is the soil in which the souls of my loved ones flourish, nurtured by authentic love and honest partnership.\n\n`;
-            script += `I transmute friction into flow in every domestic interaction. I am the source of stability and growth, building a legacy of connection that endures beyond time.\n\n`;
+            script += `My home is a fortress of absolute peace and relational stillness. I am the anchor of calm in the midst of any domestic storm, creating a sanctuary of peace for all who enter. Why is my home such an unshakeable fortress of absolute peace?\n\n`;
+            script += `I build my relationships with the geometry of universal harmony. I listen from the depth of my being, creating deep emotional safety and domestic autonomy for my loved ones. How and I so lucky to share such deep relational stillness and authentic love?\n\n`;
+            script += `My connection to my family is an unshakeable current of silent understanding. We are a symphony of individuals, moving in the flow of oneness and mutually supportive growth. Why do my relationships flourish with such universal harmony and safety?\n\n`;
+            script += `I guide the next generation through the power of my own expansion. My home is the soil in which the souls of my loved ones flourish, nurtured by authentic love and honest partnership. How can our domestic autonomy get even better than this?\n\n`;
+            script += `I transmute friction into flow in every domestic interaction. I am the source of stability and growth, building a legacy of connection that endures beyond time. Why am I the perfect anchor of calm and support for my family?\n\n`;
         } else if (p.id === 'social') {
-            script += `I exist in public exactly as I am, a beacon of radical authenticity. My presence is my power; I influence others by simply being my true self with unmasked presence.\n\n`;
-            script += `I attract those who resonate with the frequency of my expansion. My relationships are high-resolution mirrors of my soul's purpose, anchored in radical honesty and authentic connection.\n\n`;
-            script += `I am seen and heard in the light of my own truth. My words carry the weight of ancient wisdom and eternal focus, creating a quiet influence that ripples across the globe.\n\n`;
-            script += `I navigate the landscape of human interaction with effortless precision. I lead the world by the authority of my own expansion, anchored in unshakeable social ease.\n\n`;
-            script += `My life is a catalyst for global transformation. I am the social architect of a new reality, connecting disparate worlds with the ease of direct intuition and magnetic individualism.\n\n`;
+            script += `I exist in public exactly as I am, a beacon of radical authenticity. My presence is my power; I influence others by simply being my true self with unmasked presence. Why is my public presence such a beacon of radical authenticity?\n\n`;
+            script += `I attract those who resonate with the frequency of my expansion. My relationships are high-resolution mirrors of my soul's purpose, anchored in radical honesty and authentic connection. How and I so lucky to attract such high-frequency connections and impact?\n\n`;
+            script += `I am seen and heard in the light of my own truth. My words carry the weight of ancient wisdom and eternal focus, creating a quiet influence that ripples across the globe. Why does my unmasked influence ripple out so powerfully across the globe?\n\n`;
+            script += `I navigate the landscape of human interaction with effortless precision. I lead the world by the authority of my own expansion, anchored in unshakeable social ease. How can my magnetic reputation and public mastery expand today?\n\n`;
+            script += `My life is a catalyst for global transformation. I am the social architect of a new reality, connecting disparate worlds with the ease of direct intuition and magnetic individualism. Why am I so masterful at navigating the infinite tapestry of humanity?\n\n`;
         }
     }
 
@@ -428,13 +429,6 @@ function synthesizeNarrative(p) {
             gemText = gemText.replace('fish in a vast, open pond', `${avatar} in a ${sanctuary}`);
             script += `• ${gemText}\n`; 
         });
-        script += `\n`;
-    }
-
-    const inquiries = PowerInquiryLibrary[p.id];
-    if (inquiries && inquiries.length > 0) {
-        script += `PART III: THE POWER INQUIRY\n\n`;
-        inquiries.forEach(q => { script += `• ${q}\n`; });
         script += `\n`;
     }
 
