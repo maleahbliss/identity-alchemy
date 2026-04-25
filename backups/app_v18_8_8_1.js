@@ -295,82 +295,16 @@ function formatGems(list) {
     return `${initial} and ${last}`;
 }
 
-const PowerInquiryLibrary = {
-    spiritual: [
-        "Why is my connection to the infinite so effortless and direct?",
-        "How and I so lucky to experience such absolute spirit in my daily life?",
-        "Why does the source of all things flow through me with such luminous certainty?",
-        "How can it get even better than this absolute peace?",
-        "Why am I the perfect channel for universal wisdom?"
-    ],
-    mental: [
-        "Why am I so masterful at identifying the signal in the noise?",
-        "How and I so lucky to possess such high-resolution focus and savant insight?",
-        "Why does my mind operate with such profound intellectual ease?",
-        "How can my strategic command expand even further today?",
-        "Why is my focus such an unshakeable light for the world?"
-    ],
-    vocational: [
-        "Why does my work create such radical value for the entire globe?",
-        "How and I so lucky to lead with such authentic authority and natural presence?",
-        "Why does the world reward my visionary leadership with such massive impact?",
-        "How can my professional flow get even better than this?",
-        "Why am I so masterful at execution and legacy creation?"
-    ],
-    wealth: [
-        "Why am I so good at making, keeping, and multiplying money?",
-        "Why does abundance flow so naturally and effortlessly to me?",
-        "How and I so lucky to live in such financial sanctuary and time-rich autonomy?",
-        "How can it get even better than this infinite prosperity?",
-        "Why is my wealth such a powerful engine for my absolute freedom?"
-    ],
-    physical: [
-        "Why does my body heal and renew itself with such effortless speed?",
-        "How and I so lucky to possess such prime vitality and youthful energy?",
-        "Why is my physical vessel such a high-resolution masterpiece of health?",
-        "How can my kinetic ease and biological strength expand even more?",
-        "Why am I the master of my internal chemistry and absolute prime?"
-    ],
-    familial: [
-        "Why is my home such an unshakeable fortress of absolute peace?",
-        "How and I so lucky to share such deep relational stillness and authentic love?",
-        "Why do my relationships flourish with such universal harmony and safety?",
-        "How can our domestic autonomy get even better than this?",
-        "Why am I the perfect anchor of calm and support for my family?"
-    ],
-    social: [
-        "Why is my public presence such a beacon of radical authenticity?",
-        "How and I so lucky to attract such high-frequency connections and impact?",
-        "Why does my unmasked influence ripple out so powerfully across the globe?",
-        "How can my magnetic reputation and public mastery expand today?",
-        "Why am I so masterful at navigating the infinite tapestry of humanity?"
-    ]
-};
-
 function synthesizeNarrative(p) {
     const lib = AlchemicalDeclarations[p.id] || {};
     const selected = p.selectedGems.filter(g => lib[g]);
     const visionRaw = p.probeText || "";
     const v = visionRaw.toLowerCase();
     
-    // Adaptive Metaphor detection
-    let pondMetaphor = "vast, open pond";
-    let fishMetaphor = "goldfish";
-    if (v.includes('dancer') || v.includes('stage')) {
-        pondMetaphor = "vast, open stage";
-        fishMetaphor = "dancer";
-    } else if (v.includes('warrior') || v.includes('field')) {
-        pondMetaphor = "open field of battle";
-        fishMetaphor = "warrior";
-    } else if (v.includes('architect') || v.includes('structure')) {
-        pondMetaphor = "infinite blueprint";
-        fishMetaphor = "architect";
-    }
-
     let script = "";
 
     if (visionRaw) {
-        script += `PART I: THE VISIONARY MEDITATION\n\n`;
+        script += `MY VISION MANIFESTS IN HIGH RESOLUTION:\n\n`;
         
         if (p.id === 'spiritual') {
             script += `I take the sacred time to directly connect with the source of all things. I am a Timeless Being, moving with absolute focus and effortless momentum. I am eternally connected to the divine tapestry of God and infinity, receiving direct wisdom in every moment.\n\n`;
@@ -398,7 +332,7 @@ function synthesizeNarrative(p) {
             script += `I direct my resources with the precision of a master architect. I walk in the certainty that my needs are met before I even ask, living in the flow of universal abundance.\n\n`;
         } else if (p.id === 'physical') {
             script += `My body is a high-resolution vessel for my soul’s expansion. I am the architect of my own physical prime, radiating prime vitality and youthful energy.\n\n`;
-            script += `I move through the world with the grace and speed of a ${fishMetaphor}. My physical foundation is a sanctuary of alignment and strength, fueled by my connection to the source.\n\n`;
+            script += `I move through the world with the grace and speed of a timeless being. My physical foundation is a sanctuary of alignment and strength, fueled by my connection to the source.\n\n`;
             script += `I perform at my physical peak with the ease of focused presence. My body heals and renews itself in the stillness of my absolute peace, manifesting vibrant resilience.\n\n`;
             script += `I honor my body as a sacred expression of universal intelligence. My stamina is an infinite well, carrying me through my work with kinetic ease and neuromuscular precision.\n\n`;
             script += `I am the master of my physical habits, leading from my most authentic self. I embody the light of truth in every cell, existing in a state of biological masterpiece.\n\n`;
@@ -418,20 +352,8 @@ function synthesizeNarrative(p) {
     }
 
     if (selected.length > 0) {
-        script += `PART II: THE ARCHITECTURE OF MY NEW SELF\n\n`;
-        selected.forEach(gem => { 
-            let gemText = lib[gem] || gem;
-            // Adaptive metaphor replacement in gems
-            gemText = gemText.replace('fish in a vast, open pond', `${fishMetaphor} in a ${pondMetaphor}`);
-            script += `• ${gemText}\n`; 
-        });
-        script += `\n`;
-    }
-
-    const inquiries = PowerInquiryLibrary[p.id];
-    if (inquiries && inquiries.length > 0) {
-        script += `PART III: THE POWER INQUIRY\n\n`;
-        inquiries.forEach(q => { script += `• ${q}\n`; });
+        script += `I AM THE ARCHITECTURE OF MY NEW SELF:\n\n`;
+        selected.forEach(gem => { script += `• ${lib[gem] || gem}\n`; });
         script += `\n`;
     }
 
