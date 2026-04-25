@@ -1,18 +1,18 @@
-// Identity Alchemy - Universal Master Engine v18.2 (Divine Transcription)
+// Identity Alchemy - Universal Master Engine v18.7 (Precision Balance)
 
 const GlobalLibrary = {
     spiritual: {
         name: "Spiritual Identity",
         intro: "In this sanctuary, we dissolve the static of your history. Your Spiritual Identity is the foundation—the primal connection that determines the shape of every outcome. We are here to listen for the subtle signals of your expansion.",
         questions: ["What spiritual frictions or old stories are you ready to leave behind?", "When you feel in a state of absolute flow, what does that experience look like?", "What core principles are you ready to embody in your daily life?"],
-        states_of_being: ["Quiet Clarity", "Direct Intuition", "Universal Connection", "Peaceful Expansion", "Daily Presence", "Infinite Curiosity", "Radical Peace", "Unshakeable Faith", "Compassionate Presence", "Luminous Certainty", "Sacred Autonomy", "Effortless Surrender", "Universal Harmony", "The Light of Truth", "Alchemical Balance"],
-        states_of_power: ["Savant Insight", "Effortless Wisdom", "Spiritual Autonomy", "The Flow of Oneness", "Joyful Expansion", "Transcendent Focus", "Vibrant Oneness", "Metaphysical Ease", "Timeless Being", "Absolute Spirit"]
+        states_of_being: ["Quiet Clarity", "Direct Intuition", "Universal Connection", "Peaceful Expansion", "Daily Presence", "Infinite Curiosity", "Radical Peace", "Unshakeable Faith", "Compassionate Presence", "Luminous Certainty", "Sacred Autonomy", "Effortless Surrender", "Universal Harmony", "Alchemical Balance", "The Light of Truth"],
+        states_of_power: ["Savant Insight", "Effortless Wisdom", "Spiritual Autonomy", "The Flow of Oneness", "Resonant Stillness", "Infinite Patience", "Joyful Expansion", "The Soul’s Sanctuary", "Transcendent Focus", "The Witness State", "Archetypal Presence", "Vibrant Oneness", "Metaphysical Ease", "Timeless Being", "Absolute Spirit"]
     },
     mental: {
         name: "Mental Identity",
-        intro: "The savant mind is a high-output engine. By being brutally honest about the mental 'noise' that weighs you down, we create the contrast necessary to define your high-frequency focus.",
+        intro: "A focused mind is a high-output engine. By being brutally honest about the mental 'noise' that weighs you down, we create the contrast necessary to define your high-frequency focus.",
         questions: ["What mental distractions or historical patterns are currently clogging your focus?", "When you have absolute clarity, what does your work feel like?", "How does knowing what distracts you define the perfect sanctuary for your focus?"],
-        states_of_being: ["Laser Focus", "Quiet Genius", "Simplified Mindset", "Mental Sanctuary", "High-Resolution Thought", "Deep Intellectual Ease", "Unbound Creativity", "Cognitive Serenity", "Precise Awareness", "Mental Flow State"],
+        states_of_being: ["Laser Focus", "Quiet Mastery", "Simplified Mindset", "Mental Sanctuary", "High-Resolution Thought", "Deep Intellectual Ease", "Unbound Creativity", "Cognitive Serenity", "Precise Awareness", "Mental Flow State"],
         states_of_power: ["Absolute Certainty", "Strategic Mastery", "Cognitive Flow", "Genius Unbound", "Sharp Intuition", "The Architect’s Mind", "Analytic Speed", "Creative Synthesis", "Mastery of Concept", "Unshakeable Concentration", "High-Frequency Logic", "Savant Memory", "Effortless Learning", "The Observer Mind", "Universal Intelligence"]
     },
     vocational: {
@@ -27,7 +27,7 @@ const GlobalLibrary = {
         intro: "True wealth is the ability to choose how you spend your time. By recognizing financial friction, we reveal the hidden desire for absolute freedom and autonomy.",
         questions: ["What is the most frustrating aspect of your financial life right now?", "What does infinite financial freedom feel like to you?", "How does identifying what you don't want reveal your true desire for autonomy?"],
         states_of_being: ["Wealth Sanctuary", "Financial Peace", "Prosperous Mindset", "Abundant Living", "Time-Rich Autonomy", "Relaxed Prosperity", "Natural Abundance", "Wealth Resonance", "The Flow of Assets", "Grateful Stewardship"],
-        states_of_power: ["Automated Wealth", "Effortless Income", "Passive Abundance", "Strategic Financial Mastery", "Autonomous Flow", "Wealth from My 기초", "Reliable Prosperity", "Geometric Growth", "Prosperous Security", "Financial Sovereignity", "Economic Freedom", "Universal Abundance", "Asset Magnetism", "Infinite Resourcefulness", "The Money Magnet"]
+        states_of_power: ["Automated Wealth", "Effortless Income", "Passive Abundance", "Strategic Financial Mastery", "Autonomous Flow", "Wealth from My Genius", "Reliable Prosperity", "Geometric Growth", "Prosperous Security", "Financial Sovereignity", "Economic Freedom", "Universal Abundance", "Asset Magnetism", "Infinite Resourcefulness", "The Money Magnet"]
     },
     physical: {
         name: "Physical Identity",
@@ -46,7 +46,7 @@ const GlobalLibrary = {
     social: {
         name: "Social Identity",
         intro: "Public impact is the result of your presence. By identifying social burnout and masking, we reveal the path to effortless, authentic influence.",
-        questions: ["What social burnout or performative habits are you ready to drop?", "What does authentic influence and social ease feel like to you?", "How does identifying where your feel exhausted reveal your hidden zone of impact?"],
+        questions: ["What social burnout or performative habits are you ready to drop?", "What does authentic influence and social ease feel like to you?", "How does identifying where you feel exhausted reveal your hidden zone of impact?"],
         states_of_being: ["Unmasked Presence", "Social Sanctuary", "Effortless Charisma", "Authentic Connection", "Peaceful Visibility", "Public Transparency", "Social Autonomy", "Quiet Influence", "The Reflective Peer", "Direct Presence"],
         states_of_power: ["Radical Honesty", "Authentic Network", "Beacon of Truth", "Magnetic Reputation", "Public Mastery", "Presence-led Influence", "Autonomous Social Flow", "Massive Social Impact", "Global Network Resonance", "The Social Architect", "Masterful Networking", "Universal Charisma", "High-Resolution Visibility", "Unshakeable Social Ease", "Magnetic Individualism"]
     }
@@ -69,7 +69,7 @@ const AlchemicalDeclarations = {
         'Universal Connection': "I move in perfect harmony with the cosmos, a singular thread in the divine tapestry of Oneness.",
         'Peaceful Expansion': "My reality expands effortlessly into the vast pond of my potential, free from the glass walls of my history.",
         'Radical Peace': "I am the unshakeable center of my own universe, radiating a peace that transcends all understanding.",
-        'Infinite Curiosity': "I approach every experience with the wonder of a savant, finding God in the details of my daily life.",
+        'Infinite Curiosity': "I approach every experience with the wonder of a curious mind, finding God in the details of my daily life.",
         'Daily Presence': "I am the Master of Now. Each breath is a conscious act of creation.",
         'Luminous Certainty': "I walk in the light of absolute truth, my path illuminated by the certainty of my own expansion.",
         'Sacred Autonomy': "I claim my divine right to self-determination, leading from my most authentic presence.",
@@ -106,8 +106,7 @@ const State = {
 };
 
 function saveData() { 
-    // Minimal save for structural state if needed, but not for raw text.
-    // localStorage.setItem('id_alchemy_v18_4', JSON.stringify(State.userData)); 
+    // Manual state save could be here, but current protocol is Private Sanctuary (ephemeral).
 }
 
 // --- Global Logic ---
@@ -135,13 +134,13 @@ function synthesizeNarrative(p) {
             script += `I have mastered the art of returning to center. I do not focus on the smoke of external friction; I fall back into the depth of my peaceful expansion, choosing the joy that is always present in the moment.\n\n`;
         }
         if (specificVision.includes('curiosity') || specificVision.includes('work perfectly')) {
-            script += `In moments of uncertainty, I rely on the power of infinite curiosity. I ask the savant question: "What if everything were to work perfectly?" and I allow that answer to guide my daily creation.\n\n`;
+            script += `In moments of uncertainty, I rely on the power of infinite curiosity. I ask the powerful question: "What if everything were to work perfectly?" and I allow that answer to guide my daily creation.\n\n`;
         }
         if (specificVision.includes('present') || specificVision.includes('certainty')) {
             script += `I am the master of my morning and the architect of my day. I claim the certainty of what I am creating, directing my energy with absolute autonomy and focus.\n\n`;
         }
         if (specificVision.includes('balance') || specificVision.includes('harmony')) {
-            script += `I embody the alchemical balance between my spirit's nature and universal harmony. In this perfect resonance, surrender becomes effortless, and I receive the savant insight of the light of truth.\n\n`;
+            script += `I embody the alchemical balance between my spirit's nature and universal harmony. In this perfect resonance, surrender becomes effortless, and I receive the Savant Insight of the light of truth.\n\n`;
         }
     }
 
@@ -221,7 +220,6 @@ window.toggleAspiration = (term) => {
     const idx = p.selectedGems.indexOf(term);
     if (idx > -1) p.selectedGems.splice(idx, 1); else p.selectedGems.push(term);
     document.querySelectorAll(`.pattern-chip[data-term="${term}"]`).forEach(c => c.classList.toggle('active'));
-    saveData();
 };
 
 window.handleNext = () => {
@@ -237,7 +235,14 @@ window.handleNext = () => {
     }
 };
 
-window.updateJewel = (val) => { State.userData.pillars[State.pillarIndex].jewel = val; saveData(); };
+window.updateJewel = (val) => { State.userData.pillars[State.pillarIndex].jewel = val; };
+
+window.purgeSanctuary = () => {
+    if (confirm("This will clear all local progress and force a fresh reload. Proceed?")) {
+        localStorage.clear();
+        location.reload(true);
+    }
+};
 
 // --- SURGICAL VIEW COMPARTMENTS ---
 const Views = {
@@ -249,17 +254,10 @@ const Views = {
     manifesto: () => getManifestoView()
 };
 
-window.purgeSanctuary = () => {
-    if (confirm("This will clear all local progress and force a fresh reload. Proceed?")) {
-        localStorage.clear();
-        location.reload(true);
-    }
-};
-
 function getWelcomeView() {
     return `<div class="hero">
         <h1>Identity Alchemy</h1>
-        <p class="subtitle" style="color:var(--accent);">v18.5 Visionary Anchor</p>
+        <p class="subtitle" style="color:var(--accent);">v18.7 Precision Balance</p>
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
         <div style="display:flex; gap:1.5rem; justify-content:center; margin-top:2rem;">
             <button class="cta-btn" onclick="window.switchTo('science')">Enter the Sanctuary</button>
@@ -291,14 +289,14 @@ function getAlchemyView() {
         return `<div class="glass-card fade-in"><div style="position:absolute; top:2rem; right:2rem; font-size:0.8rem; color:var(--text-dim);">Stage: Mirror</div><h4 style="color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Chapter II</h4><h2 style="font-size:3rem;">The Selective Mirror</h2><div class="instruction-box" style="margin-bottom: 2.5rem; line-height:1.7;"><p style="color:var(--text-main); font-size:1.1rem; margin-bottom:1rem;">${frictionText} Now, we are going to define the geometry of your expansion.</p><p style="color:var(--text-dim);">Below are several states of being—Aspirations—that represent the inverted reality of your struggles. Select <b>multiple</b> Gems you are ready to claim as your new foundation.</p></div><h4 style="color:var(--accent); font-size:0.9rem; text-transform:uppercase; margin-bottom:1rem;">States of Being</h4><div class="pattern-grid" style="margin-bottom:2rem;">${lib.states_of_being.map(term => `<div class="pattern-chip ${p.selectedGems.includes(term) ? 'active' : ''}" data-term="${term}" onclick="window.toggleAspiration('${term}')">${term}</div>`).join('')}</div><h4 style="color:var(--primary); font-size:0.9rem; text-transform:uppercase; margin-bottom:1rem;">States of Power</h4><div class="pattern-grid">${lib.states_of_power.map(term => `<div class="pattern-chip ${p.selectedGems.includes(term) ? 'active' : ''}" data-term="${term}" onclick="window.toggleAspiration('${term}')">${term}</div>`).join('')}</div><button class="cta-btn mt-4" style="width:100%; margin-top:2rem;" onclick="handleNext()">Refine My Specifics</button></div>`;
     } else if (State.alchemyPhase === 'probe') {
         const formattedGems = formatGems(p.selectedGems);
-        return `<div class="glass-card fade-in"><div style="position:absolute; top:2rem; right:2rem; font-size:0.8rem; color:var(--text-dim);">Stage: Specification</div><h4 style="color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Chapter III</h4><h2 style="font-size:3rem;">Mastery of Specification</h2><div class="instruction-box" style="margin-bottom: 2rem; line-height:1.7;"><p style="color:var(--text-main); font-size:1.1rem; margin-bottom:1rem;">You have claimed your new foundation: <b>${formattedGems}</b>.</p><p style="color:var(--text-dim);">Now, we must articulate the <b>Master Blueprint</b>. How do these gems weave together into a single, luminous way of life? Narrate the vision of your expansion, letting one gem lead naturally into the next.</p></div><textarea id="main-input" placeholder="Narrate the vision of your expansion...">${p.probeText}</textarea><div class="voice-controls"><button class="mic-btn ${State.isRecording ? 'recording' : ''}" onclick="window.toggleMic()"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg></button><button class="cta-btn" onclick="handleNext()">Build Master Script</button></div></div>`;
+        return `<div class="glass-card fade-in"><div style="position:absolute; top:2rem; right:2rem; font-size:0.8rem; color:var(--text-dim);">Stage: Specification</div><h4 style="color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Chapter III</h4><h2 style="font-size:3rem;">Mastery of Specification</h2><div class="instruction-box" style="margin-bottom: 2rem; line-height:1.7;"><p style="color:var(--text-main); font-size:1.1rem; margin-bottom:1rem;">You have claimed your new foundation: <b>${formattedGems}</b>.</p><p style="color:var(--text-dim);">Now, we must articulate the <b>Master Blueprint</b>. How do these gems weave together into a single, luminous way of life? If you were living in the absolute flow of all these states, what would your inner world and your daily interactions actually look like? Narrate the vision of your expansion, letting one gem lead naturally into the next.</p></div><textarea id="main-input" placeholder="Narrate the vision of your expansion...">${p.probeText}</textarea><div class="voice-controls"><button class="mic-btn ${State.isRecording ? 'recording' : ''}" onclick="window.toggleMic()"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg></button><button class="cta-btn" onclick="handleNext()">Build Master Script</button></div></div>`;
     } else { // 'final' phase
         return `<div class="glass-card fade-in"><div style="position:absolute; top:2rem; right:2rem; font-size:0.8rem; color:var(--text-dim);">Stage: Master Script</div><h4 style="color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Chapter IV</h4><h2 style="font-size:3rem;">The Master Script</h2><div class="alchemical-bridge"><p style="font-size:1.1rem; margin-bottom:2rem; opacity:0.8;">I have alchemized your intentions into this Identity Blueprint. Polish it for perfection:</p><div style="background:rgba(45, 212, 191, 0.05); border:1px solid var(--accent); padding:2rem; border-radius:32px;"><textarea onchange="updateJewel(this.value)" style="background:transparent; border:none; color:var(--text-main); width:100%; font-size:1.4rem; line-height:1.7; padding:0; min-height:400px; font-weight:300; white-space:pre-wrap;">${p.jewel}</textarea></div></div><button class="cta-btn mt-4" style="width:100%; margin-top:2rem;" onclick="handleNext()">${State.pillarIndex < 6 ? 'Next Chapter' : 'Finalize Manifesto'}</button></div>`;
     }
 }
 
 function getManifestoView() {
-    return `<div class="glass-card fade-in"><h1>Ultimate Life Manifesto</h1><div class="final-manifesto-display">${State.userData.pillars.filter(p => p.jewel).map(p => `<div><h4 class="manifesto-pillar">${p.name}</h4><p class="manifesto-content">${p.jewel}</p></div>`).join('') || '<p>Begin your transformation to build your manifesto.</p>'}</div><button class="cta-btn mt-4" style="width:100%; margin-top:3rem;" onclick="window.print()">Print Master Script</button><button class="cta-btn mt-4" style="width:100%; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border);" onclick="if(confirm('Clear all progress?')) { localStorage.removeItem('id_alchemy_v18_0'); location.reload(); }">Reset Sanctuary</button></div>`;
+    return `<div class="glass-card fade-in"><h1>Ultimate Life Manifesto</h1><div class="final-manifesto-display">${State.userData.pillars.filter(p => p.jewel).map(p => `<div><h4 class="manifesto-pillar">${p.name}</h4><p class="manifesto-content">${p.jewel}</p></div>`).join('') || '<p>Begin your transformation to build your manifesto.</p>'}</div><button class="cta-btn mt-4" style="width:100%; margin-top:3rem;" onclick="window.print()">Print Master Script</button><button class="cta-btn mt-4" style="width:100%; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border);" onclick="if(confirm('Clear all progress?')) { location.reload(); }">Reset Sanctuary</button></div>`;
 }
 
 document.addEventListener('DOMContentLoaded', () => { window.switchTo('welcome'); VoiceController.init(); });
