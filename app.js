@@ -361,6 +361,28 @@ const MetaphorFactory = {
     }
 };
 
+function generateUniversalVision() {
+    const pillars = State.userData.pillars;
+    const v = pillars.map(p => p.probeText).join(" ").toLowerCase();
+    const { avatar, sanctuary } = MetaphorFactory.detect(v);
+    
+    let story = `THE MASTER VISION: A DAY IN THE LIFE OF MY DESIRED REALITY\n\n`;
+    
+    story += `I wake in the stillness of my physical prime, my body a high-resolution vessel of absolute health and vitality. I move with the grace and speed of a ${avatar}, feeling the kinetic ease of my biological masterpiece. I take the sacred time to directly connect with the source of all things, grounding myself in the luminous certainty of God and infinity. Why is my connection to the infinite so effortless and direct?\n\n`;
+    
+    story += `As the day expands, I step into my global command center with unshakeable focus and savant insight. My mind is a fortress of strategic command, identifying the signal in the noise with effortless precision. I produce work of exceptional quality, my executive presence alone shifting the landscape of my reality into a theater of fulfillment. How and I so lucky to possess such high-resolution focus?\n\n`;
+    
+    story += `I move into my professional flow with authentic authority and natural presence, creating radical value for the entire globe. My contribution is a weightless impact, a natural byproduct of my unmasked brilliance. I attract masses of money and monetary wealth because of the massive impact I lead, living in a state of financial sanctuary and absolute autonomy. Why does abundance flow so naturally and effortlessly to me?\n\n`;
+    
+    story += `I navigate the infinite tapestry of human interaction with magnetic individualism and social ease. I am seen and heard in the light of my own truth, my unmasked influence rippling out across the globe. I attract high-frequency connections that mirror my soul's purpose, anchored in radical honesty and authentic connection. Why is my public presence such a beacon of radical authenticity?\n\n`;
+    
+    story += `As the sun begins to set, I return to my home, an unshakeable fortress of absolute peace and relational stillness. I am the anchor of calm for my family, creating a sanctuary of safety and mutually supportive growth. I listen from the depth of my being, building a legacy of connection that endures beyond time. How and I so lucky to share such deep relational stillness and authentic love?\n\n`;
+    
+    story += `I end my day as I began it: as a Timeless Being, moving in the seamless current of universal energy. My reality is a symphony of balance, a perfect reflection of my absolute spirit. I am the master of my morning and the architect of my day. How can it get even better than this absolute peace?\n\n`;
+    
+    return story;
+}
+
 function synthesizeNarrative(p) {
     const lib = AlchemicalDeclarations[p.id] || {};
     const selected = p.selectedGems.filter(g => lib[g]);
@@ -433,6 +455,28 @@ function synthesizeNarrative(p) {
     }
 
     return script.trim();
+}
+
+function renderFinalJewel() {
+    const story = generateUniversalVision();
+    let html = `<div class="final-jewel-container">
+        <div class="master-vision-section">
+            <pre>${story}</pre>
+        </div>
+        <hr class="jewel-divider">
+        <div class="individual-pillars-section">`;
+    
+    State.userData.pillars.forEach(p => {
+        if (p.jewel) {
+            html += `<div class="pillar-jewel-card">
+                <h3>${p.title} IDENTITY</h3>
+                <pre>${p.jewel}</pre>
+            </div>`;
+        }
+    });
+    
+    html += `</div></div>`;
+    return html;
 }
 
 // --- Voice Recognition ---
@@ -655,13 +699,16 @@ function getAlchemyView() {
 }
 
 function getManifestoView() {
-    const compiled = State.userData.pillars.filter(p => p.jewel).map(p => `### ${p.name}\n\n${p.jewel}`).join("\n\n---\n\n");
-    const fullManifesto = `I AM THE CREATOR OF MY DESIRED REALITY.\n\nI have recognized the glass walls of my historical patterns and I have stepped beyond them. I am no longer the fish in the bowl; I am the expansion of the vast pond.\n\n${compiled}\n\nI move with absolute focus and effortless momentum. I am a Timeless Being living in Absolute Spirit. This is not who I am becoming; this is who I am.\n\nSO IT IS.`;
     return `<div class="glass-card fade-in">
-        <h1>Ultimate Life Manifesto</h1>
-        <div style="background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); padding:3rem; border-radius:32px; margin-top:2rem; font-size:1.2rem; line-height:1.8; white-space:pre-wrap; color:var(--text-main); font-weight:300;">${fullManifesto}</div>
+        <h1 style="margin-bottom:1rem;">Ultimate Life Manifesto</h1>
+        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v18.9.3 The Universal Scribe</p>
+        ${renderFinalJewel()}
+        <div style="margin-top:4rem; padding:2rem; border-top:1px solid var(--glass-border); text-align:center;">
+            <p class="story-text" style="font-style:italic; opacity:0.8;">"This is not who I am becoming; this is who I am."</p>
+            <h2 style="font-size:2rem; margin-top:1.5rem; letter-spacing:0.2em;">SO IT IS.</h2>
+        </div>
         <button class="cta-btn mt-4" style="width:100%; margin-top:3rem;" onclick="window.print()">Print Master Script</button>
-        <button class="cta-btn mt-4" style="width:100%; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border);" onclick="if(confirm('Clear all progress?')) { localStorage.removeItem('id_alchemy_v18_8_1'); location.reload(); }">Reset Sanctuary</button>
+        <button class="cta-btn mt-4" style="width:100%; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border);" onclick="if(confirm('Clear all progress?')) { localStorage.removeItem(STORAGE_KEY); location.reload(); }">Reset Sanctuary</button>
     </div>`;
 }
 
