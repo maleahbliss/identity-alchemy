@@ -252,13 +252,15 @@ const AlchemicalDeclarations = {
     }
 };
 
-const State = {
+const STORAGE_KEY = 'identity_alchemy_master_data';
+
+const DefaultState = {
     view: 'welcome',
     pillarIndex: 0,
     alchemyPhase: 'mirror',
     isRecording: false,
     identifiedFrictions: [],
-    userData: JSON.parse(localStorage.getItem('id_alchemy_v18_8_1')) || {
+    userData: {
         pillars: Object.keys(GlobalLibrary).map(id => ({
             id, name: GlobalLibrary[id].name,
             venting: "", jewel: "", selectedGems: [], probeText: ""
@@ -267,7 +269,15 @@ const State = {
     }
 };
 
-function saveData() { localStorage.setItem('id_alchemy_v18_8_1', JSON.stringify(State.userData)); }
+const State = JSON.parse(localStorage.getItem(STORAGE_KEY)) || DefaultState;
+
+function saveData() { 
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        ...State,
+        isRecording: false, // Don't persist recording state
+        isProcessing: false // Don't persist processing lock
+    })); 
+}
 
 // --- Global Logic ---
 function generateReflections(text, pillarId) {
