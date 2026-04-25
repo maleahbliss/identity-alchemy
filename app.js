@@ -289,21 +289,39 @@ function synthesizeNarrative(p) {
     const lib = AlchemicalDeclarations[p.id] || {};
     const selected = p.selectedGems.filter(g => lib[g]);
     const specificVision = p.probeText ? p.probeText.toLowerCase() : "";
+    
     let script = "";
+
     if (specificVision) {
         script += `MY VISION MANIFESTS IN HIGH RESOLUTION:\n\n`;
+        // Universal and Pillar-Specific Alchemical Extrapolations
         if (specificVision.includes('god') || specificVision.includes('infinity')) {
             script += `I take the sacred time to directly connect with the source of all things. Whenever I feel the old pull of struggle, I pause and return to the silence of my eternal connection.\n\n`;
         }
-        if (specificVision.includes('stress') || specificVision.includes('hardship')) {
-            script += `I have mastered the art of returning to center. I do not focus on the smoke of external friction; I fall back into the depth of my peaceful expansion.\n\n`;
+        if (specificVision.includes('noise') || specificVision.includes('static')) {
+            script += `I cut through the mental noise of the world with the precision of a master architect. My mind is a fortress of peace, anchoring only in the signal of my expansion.\n\n`;
+        }
+        if (specificVision.includes('focus') || specificVision.includes('clarity') || specificVision.includes('output')) {
+            script += `I move with absolute focus and effortless momentum. My mind is a high-output engine, processing reality with the clarity of high-frequency focus.\n\n`;
+        }
+        if (specificVision.includes('curiosity') || specificVision.includes('work perfectly')) {
+            script += `In moments of uncertainty, I rely on the power of infinite curiosity. I ask the powerful question: "What if everything were to work perfectly?" and I allow that answer to guide my daily creation.\n\n`;
+        }
+        if (specificVision.includes('present') || specificVision.includes('certainty')) {
+            script += `I am the master of my morning and the architect of my day. I claim the certainty of what I am creating, directing my energy with absolute autonomy.\n\n`;
+        }
+        // Fallback for general visioning if no keywords match but text exists
+        if (script === "MY VISION MANIFESTS IN HIGH RESOLUTION:\n\n") {
+            script += `I embody the essence of my chosen gems, allowing my reality to expand into the vast pond of my potential. I move with absolute focus and effortless momentum.\n\n`;
         }
     }
+
     if (selected.length > 0) {
         script += `I AM THE ARCHITECTURE OF MY NEW SELF:\n\n`;
         selected.forEach(gem => { script += `• ${lib[gem] || gem}\n`; });
         script += `\n`;
     }
+
     return script.trim();
 }
 
