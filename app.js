@@ -96,7 +96,7 @@ const State = {
     alchemyPhase: 'mirror',
     isRecording: false,
     identifiedFrictions: [],
-    userData: JSON.parse(localStorage.getItem('id_alchemy_v18_0')) || {
+    userData: {
         pillars: Object.keys(GlobalLibrary).map(id => ({
             id, name: GlobalLibrary[id].name,
             venting: "", jewel: "", selectedGems: [], probeText: ""
@@ -105,7 +105,10 @@ const State = {
     }
 };
 
-function saveData() { localStorage.setItem('id_alchemy_v18_0', JSON.stringify(State.userData)); }
+function saveData() { 
+    // Minimal save for structural state if needed, but not for raw text.
+    // localStorage.setItem('id_alchemy_v18_4', JSON.stringify(State.userData)); 
+}
 
 // --- Global Logic ---
 function generateReflections(text, pillarId) {
@@ -203,7 +206,6 @@ function syncInput() {
     if (el) { 
         if (State.view === 'discovery') State.userData.pillars[State.pillarIndex].venting = el.value;
         if (State.view === 'alchemy' && State.alchemyPhase === 'probe') State.userData.pillars[State.pillarIndex].probeText = el.value;
-        saveData(); 
     }
 }
 
@@ -257,7 +259,7 @@ window.purgeSanctuary = () => {
 function getWelcomeView() {
     return `<div class="hero">
         <h1>Identity Alchemy</h1>
-        <p class="subtitle" style="color:var(--accent);">v18.3 Sovereign Refresh</p>
+        <p class="subtitle" style="color:var(--accent);">v18.4 Private Sanctuary</p>
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
         <div style="display:flex; gap:1.5rem; justify-content:center; margin-top:2rem;">
             <button class="cta-btn" onclick="window.switchTo('science')">Enter the Sanctuary</button>
