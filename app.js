@@ -295,41 +295,32 @@ function formatGems(list) {
     return `${initial} and ${last}`;
 }
 
-function alchemizeText(text) {
-    if (!text) return "";
-    let t = text.trim();
-    // Remove initial fillers
-    t = t.replace(/^(okay so|so|the way|i am|i feel like)\s+/i, '');
-    // Capitalize Alchemical Power Words
-    const powerWords = ["Legacy", "Visionary", "Savant", "Radical Value", "Executive Presence", "Monetary Wealth", "Global", "Impact", "Masterful", "Execution", "Authority", "Natural Presence", "Flow", "Abundance"];
-    powerWords.forEach(word => {
-        const regex = new RegExp(`\\b${word}\\b`, 'gi');
-        t = t.replace(regex, word);
-    });
-    return t.charAt(0).toUpperCase() + t.slice(1);
-}
-
 function synthesizeNarrative(p) {
     const lib = AlchemicalDeclarations[p.id] || {};
     const selected = p.selectedGems.filter(g => lib[g]);
     const visionRaw = p.probeText || "";
+    const v = visionRaw.toLowerCase();
     
     let script = "";
 
     if (visionRaw) {
         script += `MY VISION MANIFESTS IN HIGH RESOLUTION:\n\n`;
         
-        const alchemizedVision = alchemizeText(visionRaw);
-        
         if (p.id === 'spiritual') {
-            script += `I take the sacred time to directly connect with the source of all things. I am a Timeless Being, moving with absolute focus and effortless momentum. ${alchemizedVision}\n\n`;
-            script += `I have mastered the art of returning to center. I do not focus on the smoke of external friction; I fall back into the depth of my peaceful expansion, remembering that I have direct access to intuition in every moment.\n\n`;
+            script += `I take the sacred time to directly connect with the source of all things. I am a Timeless Being, moving with absolute focus and effortless momentum. I am eternally connected to the divine tapestry of God and infinity, receiving direct wisdom in every moment.\n\n`;
+            script += `Whenever I feel the old pull of struggle or the static of uncertainty, I pause and fall back into the depth of my peaceful expansion. I have direct access to intuition because I AM the source of it, and I choose to lead from my most authentic presence.\n\n`;
+            script += `I release the friction of the old story. I do not focus on the smoke of external hardship; I focus on the signal of my own expansion. I ask the powerful question: "What if everything were to work perfectly?" and I allow that luminous certainty to guide my daily creation.\n\n`;
+            script += `I am the master of my morning and the architect of my day. I lead from the depth of my being, my impact a natural byproduct of my unshakeable faith and radical peace.\n\n`;
+            script += `I am the river and the ocean, moving in the seamless current of universal energy. My reality is a symphony of balance, resonating with the frequency of absolute spirit.\n\n`;
         } else if (p.id === 'mental') {
-            script += `I am the Architect of my own focus and the Master of my mental engine. ${alchemizedVision}\n\n`;
-            script += `I am a Visionary leader who has an executive presence that creates enduring Legacy impact. I move with strategic command, my presence alone shifting the landscape of my reality into a fortress of peace and unshakeable focus.\n\n`;
-            script += `I am masterful at execution, producing Savant-level output with the ease of high-frequency thought. I know what I am creating, and I know exactly how to make it happen, attracting masses of monetary wealth as a natural reward for the radical value I create for the entire globe.\n\n`;
+            script += `I am the Architect of my own focus and the Master of my mental engine. I possess the clarity of high-frequency focus, seeing the geometry of reality with effortless precision and masterful execution.\n\n`;
+            script += `I am a Visionary leader who has an executive presence that creates enduring Legacy impact. I move with strategic command, my presence alone shifting the landscape of my reality into a fortress of peace and unshakeable concentration.\n\n`;
+            script += `I create radical value for the entire globe. My contribution flows with effortless momentum, a natural byproduct of my authentic authority and natural presence. Ideas and solutions come to me with profound ease, for I have mastered the alchemical balance between intention and surrender.\n\n`;
+            script += `I produce Savant-level output with the ease of high-frequency thought. I know what I am creating, I know what I want, and I know exactly how to make it happen. I am the observer of my thoughts, choosing only those that fuel my expansion.\n\n`;
+            script += `I attract masses of money and monetary wealth because of the massive impact I lead. I create exactly what the world needs, and the universe happily rewards me with abundance. I am the master of my morning and the architect of my day, leading from my most authentic brilliance.\n\n`;
         } else {
-            script += `${alchemizedVision}\n\n`;
+            script += `I embody the essence of my chosen gems, allowing my reality to expand into the vast pond of my potential. I move with absolute focus and effortless momentum, transmuting my intention into direct reality.\n\n`;
+            script += `I release the friction of the old story and step into the radiant expansion of my desired reality. This is not who I am becoming; this is who I am.\n\n`;
         }
     }
 
