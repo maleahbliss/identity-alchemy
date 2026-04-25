@@ -126,12 +126,6 @@ function synthesizeNarrative(p) {
     let script = `I AM THE CREATOR OF MY DESIRED REALITY.\n\n`;
     script += `I have recognized the glass walls of my historical patterns and I have stepped beyond them. I am no longer the fish in the bowl; I am the expansion of the vast pond.\n\n`;
 
-    if (selected.length > 0) {
-        script += `I AM THE ARCHITECTURE OF MY NEW SELF:\n\n`;
-        selected.forEach(gem => { script += `• ${lib[gem]}\n`; });
-        script += `\n`;
-    }
-
     if (specificVision) {
         script += `MY VISION MANIFESTS IN HIGH RESOLUTION:\n\n`;
         if (specificVision.includes('god') || specificVision.includes('infinity')) {
@@ -149,6 +143,12 @@ function synthesizeNarrative(p) {
         if (specificVision.includes('balance') || specificVision.includes('harmony')) {
             script += `I embody the alchemical balance between my spirit's nature and universal harmony. In this perfect resonance, surrender becomes effortless, and I receive the savant insight of the light of truth.\n\n`;
         }
+    }
+
+    if (selected.length > 0) {
+        script += `I AM THE ARCHITECTURE OF MY NEW SELF:\n\n`;
+        selected.forEach(gem => { script += `• ${lib[gem]}\n`; });
+        script += `\n`;
     }
 
     script += `I move with absolute focus and effortless momentum. I am a Timeless Being living in Absolute Spirit. This is not who I am becoming; this is who I am.\n\n`;
@@ -259,7 +259,7 @@ window.purgeSanctuary = () => {
 function getWelcomeView() {
     return `<div class="hero">
         <h1>Identity Alchemy</h1>
-        <p class="subtitle" style="color:var(--accent);">v18.4 Private Sanctuary</p>
+        <p class="subtitle" style="color:var(--accent);">v18.5 Visionary Anchor</p>
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
         <div style="display:flex; gap:1.5rem; justify-content:center; margin-top:2rem;">
             <button class="cta-btn" onclick="window.switchTo('science')">Enter the Sanctuary</button>
