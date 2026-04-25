@@ -247,8 +247,23 @@ const Views = {
     manifesto: () => getManifestoView()
 };
 
+window.purgeSanctuary = () => {
+    if (confirm("This will clear all local progress and force a fresh reload. Proceed?")) {
+        localStorage.clear();
+        location.reload(true);
+    }
+};
+
 function getWelcomeView() {
-    return `<div class="hero"><h1>Identity Alchemy</h1><p class="subtitle" style="color:var(--accent);">v18.2 Divine Transcription</p><p class="subtitle">A Voyage into the Primal Root of Reality.</p><button class="cta-btn" onclick="window.switchTo('science')">Enter the Sanctuary</button></div>`;
+    return `<div class="hero">
+        <h1>Identity Alchemy</h1>
+        <p class="subtitle" style="color:var(--accent);">v18.3 Sovereign Refresh</p>
+        <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
+        <div style="display:flex; gap:1.5rem; justify-content:center; margin-top:2rem;">
+            <button class="cta-btn" onclick="window.switchTo('science')">Enter the Sanctuary</button>
+            <button class="cta-btn" style="background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border);" onclick="window.purgeSanctuary()">Force Refresh & Reset</button>
+        </div>
+    </div>`;
 }
 
 function getScienceView() {
