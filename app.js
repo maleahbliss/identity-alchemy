@@ -347,25 +347,28 @@ const PowerInquiryLibrary = {
     ]
 };
 
+const MetaphorFactory = {
+    detect: (text) => {
+        const v = text.toLowerCase();
+        if (v.includes('dancer') || v.includes('stage')) return { avatar: "dancer", sanctuary: "vast, open stage" };
+        if (v.includes('leader') || v.includes('executive') || v.includes('command')) return { avatar: "visionary leader", sanctuary: "global command center" };
+        if (v.includes('warrior') || v.includes('battle') || v.includes('field')) return { avatar: "unshakeable warrior", sanctuary: "open field of expansion" };
+        if (v.includes('architect') || v.includes('build') || v.includes('structure')) return { avatar: "master architect", sanctuary: "infinite blueprint" };
+        if (v.includes('artist') || v.includes('create') || v.includes('canvas')) return { avatar: "original creator", sanctuary: "infinite canvas of potential" };
+        if (v.includes('healer') || v.includes('restore') || v.includes('peace')) return { avatar: "luminous healer", sanctuary: "field of restoration" };
+        if (v.includes('seeker') || v.includes('wisdom') || v.includes('library')) return { avatar: "savant seeker", sanctuary: "infinite library of wisdom" };
+        return { avatar: "goldfish", sanctuary: "vast, open pond" }; // Default
+    }
+};
+
 function synthesizeNarrative(p) {
     const lib = AlchemicalDeclarations[p.id] || {};
     const selected = p.selectedGems.filter(g => lib[g]);
     const visionRaw = p.probeText || "";
     const v = visionRaw.toLowerCase();
     
-    // Adaptive Metaphor detection
-    let pondMetaphor = "vast, open pond";
-    let fishMetaphor = "goldfish";
-    if (v.includes('dancer') || v.includes('stage')) {
-        pondMetaphor = "vast, open stage";
-        fishMetaphor = "dancer";
-    } else if (v.includes('warrior') || v.includes('field')) {
-        pondMetaphor = "open field of battle";
-        fishMetaphor = "warrior";
-    } else if (v.includes('architect') || v.includes('structure')) {
-        pondMetaphor = "infinite blueprint";
-        fishMetaphor = "architect";
-    }
+    // Adaptive Metaphor detection from context
+    const { avatar, sanctuary } = MetaphorFactory.detect(visionRaw + " " + p.venting);
 
     let script = "";
 
@@ -398,7 +401,7 @@ function synthesizeNarrative(p) {
             script += `I direct my resources with the precision of a master architect. I walk in the certainty that my needs are met before I even ask, living in the flow of universal abundance.\n\n`;
         } else if (p.id === 'physical') {
             script += `My body is a high-resolution vessel for my soul’s expansion. I am the architect of my own physical prime, radiating prime vitality and youthful energy.\n\n`;
-            script += `I move through the world with the grace and speed of a ${fishMetaphor}. My physical foundation is a sanctuary of alignment and strength, fueled by my connection to the source.\n\n`;
+            script += `I move through the world with the grace and speed of a ${avatar}. My physical foundation is a sanctuary of alignment and strength, fueled by my connection to the source.\n\n`;
             script += `I perform at my physical peak with the ease of focused presence. My body heals and renews itself in the stillness of my absolute peace, manifesting vibrant resilience.\n\n`;
             script += `I honor my body as a sacred expression of universal intelligence. My stamina is an infinite well, carrying me through my work with kinetic ease and neuromuscular precision.\n\n`;
             script += `I am the master of my physical habits, leading from my most authentic self. I embody the light of truth in every cell, existing in a state of biological masterpiece.\n\n`;
@@ -422,7 +425,7 @@ function synthesizeNarrative(p) {
         selected.forEach(gem => { 
             let gemText = lib[gem] || gem;
             // Adaptive metaphor replacement in gems
-            gemText = gemText.replace('fish in a vast, open pond', `${fishMetaphor} in a ${pondMetaphor}`);
+            gemText = gemText.replace('fish in a vast, open pond', `${avatar} in a ${sanctuary}`);
             script += `• ${gemText}\n`; 
         });
         script += `\n`;
