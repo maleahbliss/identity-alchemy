@@ -295,46 +295,41 @@ function formatGems(list) {
     return `${initial} and ${last}`;
 }
 
+function alchemizeText(text) {
+    if (!text) return "";
+    let t = text.trim();
+    // Remove initial fillers
+    t = t.replace(/^(okay so|so|the way|i am|i feel like)\s+/i, '');
+    // Capitalize Alchemical Power Words
+    const powerWords = ["Legacy", "Visionary", "Savant", "Radical Value", "Executive Presence", "Monetary Wealth", "Global", "Impact", "Masterful", "Execution", "Authority", "Natural Presence", "Flow", "Abundance"];
+    powerWords.forEach(word => {
+        const regex = new RegExp(`\\b${word}\\b`, 'gi');
+        t = t.replace(regex, word);
+    });
+    return t.charAt(0).toUpperCase() + t.slice(1);
+}
+
 function synthesizeNarrative(p) {
     const lib = AlchemicalDeclarations[p.id] || {};
     const selected = p.selectedGems.filter(g => lib[g]);
-    const vision = p.probeText || "";
-    const lowerVision = vision.toLowerCase();
+    const visionRaw = p.probeText || "";
     
     let script = "";
 
-    if (vision) {
+    if (visionRaw) {
         script += `MY VISION MANIFESTS IN HIGH RESOLUTION:\n\n`;
         
-        // Pillar-Aware Alchemical Masterpiece Logic
+        const alchemizedVision = alchemizeText(visionRaw);
+        
         if (p.id === 'spiritual') {
-            if (lowerVision.includes('god') || lowerVision.includes('infinity')) {
-                script += `I take the sacred time to directly connect with the source of all things. Whenever I feel the old pull of struggle or uncertainty, I pause and return to the silence of my eternal connection to God and infinity.\n\n`;
-            }
-            if (lowerVision.includes('struggle') || lowerVision.includes('stressed') || lowerVision.includes('friction')) {
-                script += `I have mastered the art of returning to center. I do not focus on the smoke of external friction; I fall back into the depth of my peaceful expansion, remembering that I have direct access to intuition in every moment.\n\n`;
-            }
-            if (lowerVision.includes('curiosity') || lowerVision.includes('perfect')) {
-                script += `In moments of uncertainty, I rely on the power of infinite curiosity. I ask the powerful question: "What if everything were to work perfectly?" and I allow that divine answer to guide my daily creation.\n\n`;
-            }
+            script += `I take the sacred time to directly connect with the source of all things. I am a Timeless Being, moving with absolute focus and effortless momentum. ${alchemizedVision}\n\n`;
+            script += `I have mastered the art of returning to center. I do not focus on the smoke of external friction; I fall back into the depth of my peaceful expansion, remembering that I have direct access to intuition in every moment.\n\n`;
         } else if (p.id === 'mental') {
-            if (lowerVision.includes('legacy impact') || lowerVision.includes('executive presence')) {
-                script += `I am a Visionary leader who has an executive presence that creates enduring Legacy impact. I move with strategic command, my presence alone shifting the landscape of my reality.\n\n`;
-            }
-            if (lowerVision.includes('radical value') || lowerVision.includes('globe')) {
-                script += `I create radical value for the entire globe. My contribution flows with effortless momentum, a natural byproduct of my authentic authority and natural presence.\n\n`;
-            }
-            if (lowerVision.includes('money') || lowerVision.includes('wealth')) {
-                script += `I attract masses of money and monetary wealth because of the massive impact I lead. I create exactly what the world needs, and the universe happily rewards me with abundance.\n\n`;
-            }
-            if (lowerVision.includes('execution') || lowerVision.includes('output')) {
-                script += `I am masterful at execution, producing Savant-level output with the ease of high-frequency focus. I know what I am creating, and I know exactly how to make it happen.\n\n`;
-            }
-        }
-
-        // Masterpiece Fallback (Ensures even unspecified pillars are alchemized)
-        if (script === "MY VISION MANIFESTS IN HIGH RESOLUTION:\n\n") {
-            script += `I embody the essence of my chosen gems, allowing my reality to expand into the vast pond of my potential. I move with absolute focus and effortless momentum, transmuting my intention into direct reality.\n\n`;
+            script += `I am the Architect of my own focus and the Master of my mental engine. ${alchemizedVision}\n\n`;
+            script += `I am a Visionary leader who has an executive presence that creates enduring Legacy impact. I move with strategic command, my presence alone shifting the landscape of my reality into a fortress of peace and unshakeable focus.\n\n`;
+            script += `I am masterful at execution, producing Savant-level output with the ease of high-frequency thought. I know what I am creating, and I know exactly how to make it happen, attracting masses of monetary wealth as a natural reward for the radical value I create for the entire globe.\n\n`;
+        } else {
+            script += `${alchemizedVision}\n\n`;
         }
     }
 
