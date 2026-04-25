@@ -460,17 +460,18 @@ function synthesizeNarrative(p) {
 function renderFinalJewel() {
     const story = generateUniversalVision();
     let html = `<div class="final-jewel-container">
-        <div class="master-vision-section">
-            <pre>${story}</pre>
+        <div class="master-vision-section glass-card" style="margin-bottom:3rem; padding:3rem; background:rgba(45, 212, 191, 0.03);">
+            <div style="white-space:pre-wrap; font-size:1.4rem; line-height:1.8; color:var(--text-main); font-weight:300;">${story}</div>
         </div>
-        <hr class="jewel-divider">
-        <div class="individual-pillars-section">`;
+        <hr class="jewel-divider" style="margin:4rem 0; opacity:0.2;">
+        <div class="individual-pillars-section" style="display:flex; flex-direction:column; gap:3rem;">`;
     
     State.userData.pillars.forEach(p => {
         if (p.jewel) {
-            html += `<div class="pillar-jewel-card">
-                <h3>${p.title} IDENTITY</h3>
-                <pre>${p.jewel}</pre>
+            const pillarName = GlobalLibrary[p.id]?.name || p.id.toUpperCase();
+            html += `<div class="pillar-jewel-card glass-card" style="padding:2.5rem; border:1px solid rgba(255,255,255,0.05);">
+                <h3 style="color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; font-size:0.9rem; margin-bottom:1.5rem;">${pillarName} IDENTITY</h3>
+                <div style="white-space:pre-wrap; font-size:1.2rem; line-height:1.7; color:var(--text-main); font-weight:300;">${p.jewel}</div>
             </div>`;
         }
     });
