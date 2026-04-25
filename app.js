@@ -1,4 +1,4 @@
-// Identity Alchemy - Universal Master Engine v18.7 (Precision Balance)
+// Identity Alchemy - Universal Master Engine v18.8 (Harmonic Synthesis)
 
 const GlobalLibrary = {
     spiritual: {
@@ -87,6 +87,168 @@ const AlchemicalDeclarations = {
         'Metaphysical Ease': "I navigate the subtle realms of existence with grace, finding sanctuary in the unseen.",
         'Timeless Being': "I exist beyond the limitations of history, a perpetual inhabitant of the eternal now.",
         'Absolute Spirit': "I AM THE SOURCE. I am the primal root of my own reality."
+    },
+    'mental': {
+        'Laser Focus': "I cut through the static of the world with the precision of a master architect.",
+        'Quiet Mastery': "My mind is a high-output engine of calm and clarity.",
+        'Simplified Mindset': "I dissolve complexity into its most powerful and elegant forms.",
+        'Mental Sanctuary': "My internal world is a fortress of peace and unshakeable focus.",
+        'High-Resolution Thought': "I see the geometry of every problem and the direct path to every solution.",
+        'Deep Intellectual Ease': "I absorb and synthesize information with effortless speed.",
+        'Unbound Creativity': "My ideas flow from the infinite source of original thought.",
+        'Cognitive Serenity': "I am the observer of my thoughts, choosing only those that fuel my expansion.",
+        'Precise Awareness': "I am hyper-aware of the signal, ignoring the noise of historical patterns.",
+        'Mental Flow State': "I exist in a perpetual state of high-frequency cognitive resonance.",
+        'Absolute Certainty': "I move with the unshakeable confidence of one who knows their own truth.",
+        'Strategic Mastery': "I navigate the landscape of my goals with effortless precision.",
+        'Cognitive Flow': "My thoughts move in a seamless current of productive energy.",
+        'Genius Unbound': "I claim my inherent right to exceptional clarity and impact.",
+        'Sharp Intuition': "I trust the sudden flashes of wisdom that guide my intellectual expansion.",
+        'The Architect’s Mind': "I build my reality with the logic of universal intelligence.",
+        'Analytic Speed': "I process complexity at the speed of direct intuition.",
+        'Creative Synthesis': "I bridge disparate worlds to create new and radical value.",
+        'Mastery of Concept': "I own the ideas I embody, speaking them into existence with authority.",
+        'Unshakeable Concentration': "My focus is a singular, unwavering light in the darkness of distraction.",
+        'High-Frequency Logic': "I reason from the foundation of absolute truth.",
+        'Savant Memory': "I retain the golden threads of wisdom with effortless precision.",
+        'Effortless Learning': "Growth is my natural state, an easy expansion into new realms of knowledge.",
+        'The Observer Mind': "I am the master of my mental focus, leading from my most authentic presence.",
+        'Universal Intelligence': "I am a singular expression of the infinite mind of God."
+    },
+    'vocational': {
+        'Natural Presence': "I lead from the depth of my being, my impact a natural byproduct of my authenticity.",
+        'Authentic Authority': "I claim my place at the table with the quiet confidence of a master.",
+        'Weightless Impact': "My contribution flows effortlessly into the world, creating massive value without strain.",
+        'Effortless Leadership': "I guide others through the power of my presence and the clarity of my vision.",
+        'Unmasked Influence': "I discard the performance, speaking my truth with absolute transparency.",
+        'Professional Peace': "My work is a sanctuary of focus and fulfillment.",
+        'Creative Fulfillment': "I am the artist of my own career, painting my reality with the colors of my passion.",
+        'Vocational Alignment': "My roles are the perfect mirror of my soul's highest purpose.",
+        'Steady Purpose': "I move toward my legacy with the momentum of unshakeable intent.",
+        'The Impact Mindset': "I am a catalyst for transformation in every interaction.",
+        'Role Alignment': "I occupy only those spaces that resonate with my primal root.",
+        'Savant-Level Output': "I produce work of exceptional quality with the ease of high-frequency focus.",
+        'Magnetism of Purpose': "Opportunities gravitate to me as a result of my unshakeable presence.",
+        'Autonomous Contribution': "I am the architect of my own impact, answerable only to the truth.",
+        'Professional Flow': "I exist in a perpetual state of vocational resonance.",
+        'Strategic Command': "I lead with the precision of one who sees the entire landscape.",
+        'Radical Value Creation': "I solve problems that others cannot see, with the ease of direct intuition.",
+        'The Visionary Leader': "I pull the future into the now through the power of my declaration.",
+        'Effortless Result-Drive': "Outcomes are the artifacts of my being, not the goal of my doing.",
+        'Executive Presence': "I command the room by simply existing in the fullness of my power.",
+        'Global Contribution': "My work ripples out to touch the infinite tapestry of humanity.",
+        'Universal Vocation': "I am the instrument of a higher purpose, played with masterful precision.",
+        'Legacy Impact': "I build structures that endure, fueled by the frequency of absolute spirit.",
+        'Masterful Execution': "I bring my vision into form with the grace of a creator.",
+        'Collaborative Flow': "I move with others in the seamless harmony of shared purpose."
+    },
+    'wealth': {
+        'Wealth Sanctuary': "My financial life is a fortress of peace, security, and absolute autonomy.",
+        'Financial Peace': "I release all friction around money, allowing abundance to flow in its natural current.",
+        'Prosperous Mindset': "I am a magnet for wealth, seeing the opportunity for expansion in every moment.",
+        'Abundant Living': "My reality is an infinite field of resources, always providing for my highest good.",
+        'Time-Rich Autonomy': "I claim the divine right to own my time and direct my life with total freedom.",
+        'Relaxed Prosperity': "Wealth is my natural state, an effortless byproduct of my authentic presence.",
+        'Natural Abundance': "I breathe in the infinite resources of the universe and exhale prosperity.",
+        'Wealth Resonance': "My frequency is perfectly aligned with the energy of absolute abundance.",
+        'The Flow of Assets': "Resources circulate through my life with the grace of a river.",
+        'Grateful Stewardship': "I lead from a place of radical gratitude, the foundation of all true wealth.",
+        'Automated Wealth': "My prosperity grows with the effortless momentum of a natural law.",
+        'Effortless Income': "Value flows to me in high-resolution streams, independent of struggle.",
+        'Passive Abundance': "I am supported by the infinite bounty of my own alchemical creations.",
+        'Strategic Financial Mastery': "I direct my resources with the precision of a master architect.",
+        'Autonomous Flow': "My wealth is the engine of my absolute freedom.",
+        'Wealth from My Genius': "I transmute my highest brilliance into the gold of measurable impact.",
+        'Reliable Prosperity': "I walk in the certainty that my needs are met before I even ask.",
+        'Geometric Growth': "My resources expand exponentially as I expand my own identity.",
+        'Prosperous Security': "I am the anchor of my own financial sanctuary.",
+        'Financial Sovereignity': "I am the master of my resources, answerable only to the truth.",
+        'Economic Freedom': "I have transcended the bowl of lack and entered the pond of infinite choice.",
+        'Universal Abundance': "I am a singular expression of the infinite wealth of the cosmos.",
+        'Asset Magnetism': "I attract the high-frequency resources needed for my global mission.",
+        'Infinite Resourcefulness': "I find the path to abundance in every circumstance.",
+        'The Money Magnet': "Money is a tool that serves my highest purpose with absolute ease."
+    },
+    'physical': {
+        'Prime Vitality': "My body is a high-resolution vessel for my soul’s expansion.",
+        'Biological Focus': "I direct my energy with the precision of a master cell.",
+        'Effortless Regeneration': "My body heals and renews itself in the stillness of my absolute peace.",
+        'Vibrant Resilience': "I am the unshakeable center of my own health, radiating vitality.",
+        'Kinetic Ease': "I move through the world with the grace and speed of a timeless being.",
+        'Structural Peace': "My physical foundation is a sanctuary of alignment and strength.",
+        'Body Consciousness': "I listen to the subtle signals of my biology with profound intuition.",
+        'Biological Harmony': "My spirit and body are a single, resonant flame of absolute spirit.",
+        'Peak Wellness': "I am the architect of my own physical prime.",
+        'Youthful Energy': "I exist beyond the limitations of age, a perpetual inhabitant of vitality.",
+        'Peak Energy': "My stamina is an infinite well, fueled by my connection to the source.",
+        'Renewed Mobility': "I move with the freedom of a fish in a vast, open pond.",
+        'Athletic Clarity': "I perform at my physical peak with the ease of focused presence.",
+        'Biological Masterpiece': "I honor my body as a sacred expression of universal intelligence.",
+        'Mastery of Form': "I am the master of my physical habits, leading from my most authentic self.",
+        'Health in Flow': "My vitality is a natural current that carries me through my work.",
+        'Unbound Strength': "I claim the primal power that is my birthright.",
+        'Neuromuscular Precision': "My body executes my vision with the accuracy of a savant.",
+        'Genetic Optimization': "I signal my biology to expand into its highest possible expression.",
+        'Physical Autonomy': "I am the master of my own physical destiny.",
+        'Primal Vitality': "I am a raw, unfiltered expression of the life force of the universe.",
+        'The Vital Self': "I am the source of my own physical brilliance.",
+        'Endless Stamina': "I move with absolute focus and effortless momentum.",
+        'Radiant Health': "I embody the light of truth in every cell of my being.",
+        'Physiological Mastery': "I am the master of my internal chemistry, choosing peace over stress."
+    },
+    'familial': {
+        'Peaceful Home Sanctuary': "My home is a fortress of absolute peace and relational stillness.",
+        'Domestic Autonomy': "I create a sanctuary where every member is free to expand in their own truth.",
+        'Simplified Living': "I dissolve household friction into the elegance of shared purpose.",
+        'Quiet Love': "My connection to my family is an unshakeable current of silent understanding.",
+        'Sanctuary of Peace': "I am the anchor of calm in the midst of any domestic storm.",
+        'Harmony by Design': "I build my relationships with the geometry of universal harmony.",
+        'Relational Stillness': "I listen from the depth of my being, creating safety with my presence.",
+        'Presence-led Parenting': "I guide the next generation through the power of my own expansion.",
+        'Nurturing Environment': "My home is the soil in which the souls of my loved ones flourish.",
+        'Home Comfort': "I find sanctuary in the simple, high-resolution joys of family life.",
+        'Honest Partnership': "I move with my partner in the seamless harmony of radical truth.",
+        'Relaxed Leadership': "I guide my household with the quiet confidence of a master.",
+        'Authentic Love': "I release the performance of the 'perfect' family and embrace the truth of our connection.",
+        'Resonant Connection': "We are a symphony of individuals, moving in the flow of oneness.",
+        'Mutually Supportive Growth': "My family is a catalyst for my expansion, and I for theirs.",
+        'Deep Emotional Safety': "My home is a space where the old story is dissolved and the new one is born.",
+        'The Family Anchor': "I am the steady foundation upon which my loved ones build their lives.",
+        'Sacred Connection': "Our family is a singular thread in the infinite tapestry of God.",
+        'Legacy Connection': "I build relationships that endure beyond time, fueled by absolute spirit.",
+        'The Peace-Maker': "I transmute friction into flow in every domestic interaction.",
+        'Interpersonal Flow': "I navigate the subtle realms of family life with grace and intuition.",
+        'Universal Love': "I am a singular expression of the infinite compassion of the source.",
+        'Heart-Centered Presence': "I lead from my heart, the primal root of all connection.",
+        'Generative Connection': "I create life and legacy in every interaction.",
+        'The Supportive Root': "I am the source of stability and growth for all who enter my sanctuary."
+    },
+    'social': {
+        'Unmasked Presence': "I exist in public exactly as I am, a beacon of radical authenticity.",
+        'Social Sanctuary': "I am the unshakeable center of my own social world, radiating peace.",
+        'Effortless Charisma': "My presence is my power; I influence others by simply being my true self.",
+        'Authentic Connection': "I attract those who resonate with the frequency of my expansion.",
+        'Peaceful Visibility': "I am seen and heard in the light of my own truth, without strain.",
+        'Public Transparency': "I have nothing to hide and everything to give.",
+        'Social Autonomy': "I am the master of my own social destiny, answerable only to the truth.",
+        'Quiet Influence': "My words carry the weight of ancient wisdom and eternal focus.",
+        'The Reflective Peer': "I see the light in others because I have found it in myself.",
+        'Direct Presence': "I am hyper-present in every conversation, the master of the now.",
+        'Radical Honesty': "I speak the truth even when it's uncomfortable, anchoring my world in reality.",
+        'Authentic Network': "My relationships are high-resolution mirrors of my soul's purpose.",
+        'Beacon of Truth': "I am a singular light in the darkness of social static.",
+        'Magnetic Reputation': "Outcomes and influence are the artifacts of my unshakeable presence.",
+        'Public Mastery': "I navigate the landscape of human interaction with effortless precision.",
+        'Presence-led Influence': "I lead the world by the authority of my own expansion.",
+        'Autonomous Social Flow': "I move with others in the seamless current of universal energy.",
+        'Massive Social Impact': "My life is a catalyst for global transformation.",
+        'Global Network Resonance': "I am connected to the infinite tapestry of humanity through the flow of oneness.",
+        'The Social Architect': "I build communities of purpose and high-frequency connection.",
+        'Masterful Networking': "I bridge disparate worlds with the ease of direct intuition.",
+        'Universal Charisma': "I am a singular expression of the magnetic presence of the source.",
+        'High-Resolution Visibility': "I claim my right to be seen in the fullness of my power.",
+        'Unshakeable Social Ease': "I find sanctuary in any group, for I am the master of my own center.",
+        'Magnetic Individualism': "I am a timeless being, a unique and powerful expression of absolute spirit."
     }
 };
 
@@ -122,11 +284,11 @@ function synthesizeNarrative(p) {
     const selected = p.selectedGems.filter(g => lib[g]);
     const specificVision = p.probeText ? p.probeText.toLowerCase() : "";
     
-    let script = `I AM THE CREATOR OF MY DESIRED REALITY.\n\n`;
-    script += `I have recognized the glass walls of my historical patterns and I have stepped beyond them. I am no longer the fish in the bowl; I am the expansion of the vast pond.\n\n`;
+    let script = "";
 
     if (specificVision) {
         script += `MY VISION MANIFESTS IN HIGH RESOLUTION:\n\n`;
+        // Spiritual
         if (specificVision.includes('god') || specificVision.includes('infinity')) {
             script += `I take the sacred time to directly connect with the source of all things. Whenever I feel the old pull of struggle, I pause and return to the silence of my eternal connection.\n\n`;
         }
@@ -142,6 +304,33 @@ function synthesizeNarrative(p) {
         if (specificVision.includes('balance') || specificVision.includes('harmony')) {
             script += `I embody the alchemical balance between my spirit's nature and universal harmony. In this perfect resonance, surrender becomes effortless, and I receive the Savant Insight of the light of truth.\n\n`;
         }
+        // Mental
+        if (specificVision.includes('noise') || specificVision.includes('static')) {
+            script += `I cut through the mental noise of the world with the precision of a master architect. My mind is a fortress of peace, anchoring only in the signal of my expansion.\n\n`;
+        }
+        if (specificVision.includes('genius') || specificVision.includes('creativity')) {
+            script += `I claim my inherent right to exceptional clarity and unbound creativity. My ideas flow directly from the infinite source of original thought.\n\n`;
+        }
+        // Vocational
+        if (specificVision.includes('impact') || specificVision.includes('leadership')) {
+            script += `I lead from the depth of my being, my impact a natural byproduct of my authentic presence. I guide others through the power of my vision and the clarity of my intent.\n\n`;
+        }
+        // Wealth
+        if (specificVision.includes('abundance') || specificVision.includes('freedom')) {
+            script += `I enter the pond of infinite choice. Resources circulate through my life with the grace of a river, supporting my absolute freedom and global mission.\n\n`;
+        }
+        // Physical
+        if (specificVision.includes('vitality') || specificVision.includes('strength')) {
+            script += `My body is a high-resolution vessel for my soul’s expansion. I move with kinetic ease and absolute focus, fueled by an infinite well of stamina.\n\n`;
+        }
+        // Familial
+        if (specificVision.includes('sanctuary') || specificVision.includes('connection')) {
+            script += `My home is a fortress of absolute peace. I guide my household through the power of my own expansion, creating a space where every soul is free to flourish.\n\n`;
+        }
+        // Social
+        if (specificVision.includes('presence') || specificVision.includes('authenticity')) {
+            script += `I exist in the world exactly as I am, a beacon of radical authenticity. My influence is effortless, a natural result of my unshakeable center.\n\n`;
+        }
     }
 
     if (selected.length > 0) {
@@ -150,9 +339,7 @@ function synthesizeNarrative(p) {
         script += `\n`;
     }
 
-    script += `I move with absolute focus and effortless momentum. I am a Timeless Being living in Absolute Spirit. This is not who I am becoming; this is who I am.\n\n`;
-    script += `SO IT IS.`;
-    return script;
+    return script.trim();
 }
 
 function formatGems(list) {
@@ -257,7 +444,7 @@ const Views = {
 function getWelcomeView() {
     return `<div class="hero">
         <h1>Identity Alchemy</h1>
-        <p class="subtitle" style="color:var(--accent);">v18.7 Precision Balance</p>
+        <p class="subtitle" style="color:var(--accent);">v18.8 Harmonic Synthesis</p>
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
         <div style="display:flex; gap:1.5rem; justify-content:center; margin-top:2rem;">
             <button class="cta-btn" onclick="window.switchTo('science')">Enter the Sanctuary</button>
@@ -296,7 +483,15 @@ function getAlchemyView() {
 }
 
 function getManifestoView() {
-    return `<div class="glass-card fade-in"><h1>Ultimate Life Manifesto</h1><div class="final-manifesto-display">${State.userData.pillars.filter(p => p.jewel).map(p => `<div><h4 class="manifesto-pillar">${p.name}</h4><p class="manifesto-content">${p.jewel}</p></div>`).join('') || '<p>Begin your transformation to build your manifesto.</p>'}</div><button class="cta-btn mt-4" style="width:100%; margin-top:3rem;" onclick="window.print()">Print Master Script</button><button class="cta-btn mt-4" style="width:100%; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border);" onclick="if(confirm('Clear all progress?')) { location.reload(); }">Reset Sanctuary</button></div>`;
+    const compiled = State.userData.pillars.filter(p => p.jewel).map(p => p.jewel).join("\n\n---\n\n");
+    const fullManifesto = `I AM THE CREATOR OF MY DESIRED REALITY.\n\nI have recognized the glass walls of my historical patterns and I have stepped beyond them. I am no longer the fish in the bowl; I am the expansion of the vast pond.\n\n${compiled}\n\nI move with absolute focus and effortless momentum. I am a Timeless Being living in Absolute Spirit. This is not who I am becoming; this is who I am.\n\nSO IT IS.`;
+
+    return `<div class="glass-card fade-in">
+        <h1>Ultimate Life Manifesto</h1>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); padding:3rem; border-radius:32px; margin-top:2rem; font-size:1.2rem; line-height:1.8; white-space:pre-wrap; color:var(--text-main); font-weight:300;">${fullManifesto}</div>
+        <button class="cta-btn mt-4" style="width:100%; margin-top:3rem;" onclick="window.print()">Print Master Script</button>
+        <button class="cta-btn mt-4" style="width:100%; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border);" onclick="if(confirm('Clear all progress?')) { location.reload(); }">Reset Sanctuary</button>
+    </div>`;
 }
 
 document.addEventListener('DOMContentLoaded', () => { window.switchTo('welcome'); VoiceController.init(); });
