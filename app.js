@@ -298,31 +298,34 @@ function formatGems(list) {
 function synthesizeNarrative(p) {
     const lib = AlchemicalDeclarations[p.id] || {};
     const selected = p.selectedGems.filter(g => lib[g]);
-    const specificVision = p.probeText ? p.probeText.toLowerCase() : "";
+    const vision = p.probeText || "";
+    const lowerVision = vision.toLowerCase();
     
     let script = "";
 
-    if (specificVision) {
+    if (vision) {
         script += `MY VISION MANIFESTS IN HIGH RESOLUTION:\n\n`;
-        // Universal and Pillar-Specific Alchemical Extrapolations
-        if (specificVision.includes('god') || specificVision.includes('infinity')) {
-            script += `I take the sacred time to directly connect with the source of all things. Whenever I feel the old pull of struggle, I pause and return to the silence of my eternal connection.\n\n`;
+        
+        // High-Resolution Mirroring & Alchemical Extrapolation
+        if (lowerVision.includes('legacy impact') || lowerVision.includes('executive presence')) {
+            script += `I am a Visionary leader who has an executive presence that creates enduring Legacy impact. I move with strategic command, my presence alone shifting the landscape of my reality.\n\n`;
         }
-        if (specificVision.includes('noise') || specificVision.includes('static')) {
-            script += `I cut through the mental noise of the world with the precision of a master architect. My mind is a fortress of peace, anchoring only in the signal of my expansion.\n\n`;
+        if (lowerVision.includes('radical value') || lowerVision.includes('globe')) {
+            script += `I create radical value for the entire globe. My contribution flows with effortless momentum, a natural byproduct of my authentic authority and natural presence.\n\n`;
         }
-        if (specificVision.includes('focus') || specificVision.includes('clarity') || specificVision.includes('output')) {
-            script += `I move with absolute focus and effortless momentum. My mind is a high-output engine, processing reality with the clarity of high-frequency focus.\n\n`;
+        if (lowerVision.includes('money') || lowerVision.includes('wealth') || lowerVision.includes('reward')) {
+            script += `I attract masses of money and monetary wealth because of the massive impact I lead. I create exactly what the world needs, and the universe happily rewards me with abundance.\n\n`;
         }
-        if (specificVision.includes('curiosity') || specificVision.includes('work perfectly')) {
-            script += `In moments of uncertainty, I rely on the power of infinite curiosity. I ask the powerful question: "What if everything were to work perfectly?" and I allow that answer to guide my daily creation.\n\n`;
+        if (lowerVision.includes('execution') || lowerVision.includes('output')) {
+            script += `I am masterful at execution, producing Savant-level output with the ease of high-frequency focus. I know what I am creating, and I know exactly how to make it happen.\n\n`;
         }
-        if (specificVision.includes('present') || specificVision.includes('certainty')) {
-            script += `I am the master of my morning and the architect of my day. I claim the certainty of what I am creating, directing my energy with absolute autonomy.\n\n`;
+        if (lowerVision.includes('effortlessly') || lowerVision.includes('easy')) {
+            script += `I lead effortlessly. Ideas and solutions come to me with profound ease, for I have mastered the alchemical balance between intention and surrender.\n\n`;
         }
-        // Fallback for general visioning if no keywords match but text exists
+
+        // Fallback for general visioning if no specific keywords match but text exists
         if (script === "MY VISION MANIFESTS IN HIGH RESOLUTION:\n\n") {
-            script += `I embody the essence of my chosen gems, allowing my reality to expand into the vast pond of my potential. I move with absolute focus and effortless momentum.\n\n`;
+            script += `${vision}\n\n`;
         }
     }
 
