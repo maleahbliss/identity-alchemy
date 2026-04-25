@@ -1,4 +1,4 @@
-// Identity Alchemy - Universal Master Engine v18.9 (Testing Synthesis)
+// Identity Alchemy - Universal Master Engine v19.0 (Identity Persistence)
 
 const GlobalLibrary = {
     spiritual: {
@@ -114,35 +114,7 @@ const AlchemicalDeclarations = {
         'Effortless Learning': "Growth is my natural state, an easy expansion into new realms of knowledge.",
         'The Observer Mind': "I am the master of my mental focus, leading from my most authentic presence.",
         'Universal Intelligence': "I am a singular expression of the infinite mind of God."
-    },
-    'vocational': {
-        'Natural Presence': "I lead from the depth of my being, my impact a natural byproduct of my authenticity.",
-        'Authentic Authority': "I claim my place at the table with the quiet confidence of a master.",
-        'Weightless Impact': "My contribution flows effortlessly into the world, creating massive value without strain.",
-        'Effortless Leadership': "I guide others through the power of my presence and the clarity of my vision.",
-        'Unmasked Influence': "I discard the performance, speaking my truth with absolute transparency.",
-        'Professional Peace': "My work is a sanctuary of focus and fulfillment.",
-        'Creative Fulfillment': "I am the artist of my own career, painting my reality with the colors of my passion.",
-        'Vocational Alignment': "My roles are the perfect mirror of my soul's highest purpose.",
-        'Steady Purpose': "I move toward my legacy with the momentum of unshakeable intent.",
-        'The Impact Mindset': "I am a catalyst for transformation in every interaction.",
-        'Role Alignment': "I occupy only those spaces that resonate with my primal root.",
-        'Savant-Level Output': "I produce work of exceptional quality with the ease of high-frequency focus.",
-        'Magnetism of Purpose': "Opportunities gravitate to me as a result of my unshakeable presence.",
-        'Autonomous Contribution': "I am the architect of my own impact, answerable only to the truth.",
-        'Professional Flow': "I exist in a perpetual state of vocational resonance.",
-        'Strategic Command': "I lead with the precision of one who sees the entire landscape.",
-        'Radical Value Creation': "I solve problems that others cannot see, with the ease of direct intuition.",
-        'The Visionary Leader': "I pull the future into the now through the power of my declaration.",
-        'Effortless Result-Drive': "Outcomes are the artifacts of my being, not the goal of my doing.",
-        'Executive Presence': "I command the room by simply existing in the fullness of my power.",
-        'Global Contribution': "My work ripples out to touch the infinite tapestry of humanity.",
-        'Universal Vocation': "I am the instrument of a higher purpose, played with masterful precision.",
-        'Legacy Impact': "I build structures that endure, fueled by the frequency of absolute spirit.",
-        'Masterful Execution': "I bring my vision into form with the grace of a creator.",
-        'Collaborative Flow': "I move with others in the seamless harmony of shared purpose."
     }
-    // Note: Other declarations for physical, familial, social follow this pattern.
 };
 
 const State = {
@@ -151,7 +123,7 @@ const State = {
     alchemyPhase: 'mirror',
     isRecording: false,
     identifiedFrictions: [],
-    userData: JSON.parse(localStorage.getItem('id_alchemy_v18_9')) || {
+    userData: JSON.parse(localStorage.getItem('id_alchemy_v19_0')) || {
         pillars: Object.keys(GlobalLibrary).map(id => ({
             id, name: GlobalLibrary[id].name,
             venting: "", jewel: "", selectedGems: [], probeText: ""
@@ -161,7 +133,7 @@ const State = {
 };
 
 function saveData() { 
-    localStorage.setItem('id_alchemy_v18_9', JSON.stringify(State.userData)); 
+    localStorage.setItem('id_alchemy_v19_0', JSON.stringify(State.userData)); 
 }
 
 // --- Global Logic ---
@@ -181,7 +153,7 @@ function synthesizeNarrative(p) {
 
     if (specificVision) {
         script += `MY VISION MANIFESTS IN HIGH RESOLUTION:\n\n`;
-        // Mapping logic for keywords
+        // General mapping for core vision
         if (specificVision.includes('god') || specificVision.includes('infinity')) {
             script += `I take the sacred time to directly connect with the source of all things. Whenever I feel the old pull of struggle, I pause and return to the silence of my eternal connection.\n\n`;
         }
@@ -197,12 +169,12 @@ function synthesizeNarrative(p) {
         if (specificVision.includes('balance') || specificVision.includes('harmony')) {
             script += `I embody the alchemical balance between my spirit's nature and universal harmony. In this perfect resonance, surrender becomes effortless, and I receive the Savant Insight of the light of truth.\n\n`;
         }
-        // Mental keywords
+        // Mental Keywords
         if (specificVision.includes('noise') || specificVision.includes('static')) {
             script += `I cut through the mental noise of the world with the precision of a master architect. My mind is a fortress of peace, anchoring only in the signal of my expansion.\n\n`;
         }
-        if (specificVision.includes('impact') || specificVision.includes('leadership')) {
-            script += `I lead from the depth of my being, my impact a natural byproduct of my authentic presence.\n\n`;
+        if (specificVision.includes('focus') || specificVision.includes('clarity')) {
+            script += `I move with absolute focus and effortless momentum. My clarity is a sharp, unwavering light that illuminates my chosen path.\n\n`;
         }
     }
 
@@ -234,7 +206,7 @@ const VoiceController = {
     stop: () => { State.isRecording = false; if (recognition) recognition.stop(); }
 };
 
-// --- Surgical Interface Routing ---
+// --- Interface Routing ---
 window.switchTo = (v) => { 
     syncInput(); VoiceController.stop(); State.view = v; 
     const main = document.getElementById('main-content');
@@ -250,6 +222,7 @@ window.switchTo = (v) => {
     }
     main.innerHTML = Views[v] ? Views[v]() : "View missing."; 
     window.scrollTo(0, 0); 
+    saveData();
 };
 
 function syncInput() {
@@ -291,18 +264,7 @@ window.handleNext = () => {
 
 window.updateJewel = (val) => { State.userData.pillars[State.pillarIndex].jewel = val; saveData(); };
 
-window.loadDemo = () => {
-    if (typeof DemoData !== 'undefined') {
-        State.userData.pillars = JSON.parse(JSON.stringify(DemoData));
-        saveData();
-        alert("Demo Blueprint Loaded. Navigate to 'The Pond' to see the compiled Manifesto.");
-        window.switchTo('manifesto');
-    } else {
-        alert("Demo data library not found.");
-    }
-};
-
-// --- SURGICAL VIEW COMPARTMENTS ---
+// --- VIEW COMPARTMENTS ---
 const Views = {
     welcome: () => getWelcomeView(),
     science: () => getScienceView(),
@@ -315,11 +277,10 @@ const Views = {
 function getWelcomeView() {
     return `<div class="hero">
         <h1>Identity Alchemy</h1>
-        <p class="subtitle" style="color:var(--accent);">v18.9 Testing Synthesis</p>
+        <p class="subtitle" style="color:var(--accent);">v19.0 Identity Persistence</p>
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
         <div style="display:flex; gap:1.5rem; justify-content:center; margin-top:2rem;">
             <button class="cta-btn" onclick="window.switchTo('science')">Enter the Sanctuary</button>
-            <button class="cta-btn" style="background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border);" onclick="window.loadDemo()">Load Test Blueprint</button>
         </div>
     </div>`;
 }
@@ -330,7 +291,7 @@ function getScienceView() {
 
 function getIntroView() {
     const p = GlobalLibrary[State.userData.pillars[State.pillarIndex].id];
-    return `<div class="glass-card fade-in"><div style="position:absolute; top:2rem; right:2rem; font-size:0.8rem; color:var(--text-dim);">Pillar ${State.pillarIndex + 1}/7</div><div class="progress-container"><div class="progress-fill" style="width:${(State.pillarIndex + 1) * 14.2}%"></div></div><h4 style="color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Foundation</h4><h2 style="font-size:3rem;">${p.name}</h2><p class="story-text" style="margin-top:2rem;">${p.intro}</p><button class="cta-btn" style="margin-top:2rem;" onclick="window.switchTo('discovery')">Enter the Inventory</button></div>`;
+    return `<div class="glass-card fade-in"><div style="position:absolute; top:2rem; right:2rem; font-size:0.8rem; color:var(--text-dim);">Pillar ${State.pillarIndex + 1}/7</div><div class="progress-container"><div class="progress-fill" style="width:${(State.pillarIndex + 1) * 14.2}%"></div></div><h4 style="color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Foundation</h4><h2 style="font-size:3rem;">${p.name}</h2><p class="story-text" style="margin-top:2rem;">${p.intro}</p><button class="cta-btn" style="margin-top:2rem;" onclick="window.switchTo('discovery')">${State.userData.pillars[State.pillarIndex].jewel ? 'Review My Inventory' : 'Enter the Inventory'}</button></div>`;
 }
 
 function getInventoryView() {
@@ -347,21 +308,21 @@ function getAlchemyView() {
         return `<div class="glass-card fade-in"><div style="position:absolute; top:2rem; right:2rem; font-size:0.8rem; color:var(--text-dim);">Stage: Mirror</div><h4 style="color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Chapter II</h4><h2 style="font-size:3rem;">The Selective Mirror</h2><div class="instruction-box" style="margin-bottom: 2.5rem; line-height:1.7;"><p style="color:var(--text-main); font-size:1.1rem; margin-bottom:1rem;">${frictionText} Now, we are going to define the geometry of your expansion.</p><p style="color:var(--text-dim);">Below are several states of being—Aspirations—that represent the inverted reality of your struggles. Select <b>multiple</b> Gems you are ready to claim as your new foundation.</p></div><h4 style="color:var(--accent); font-size:0.9rem; text-transform:uppercase; margin-bottom:1rem;">States of Being</h4><div class="pattern-grid" style="margin-bottom:2rem;">${lib.states_of_being.map(term => `<div class="pattern-chip ${p.selectedGems.includes(term) ? 'active' : ''}" data-term="${term}" onclick="window.toggleAspiration('${term}')">${term}</div>`).join('')}</div><h4 style="color:var(--primary); font-size:0.9rem; text-transform:uppercase; margin-bottom:1rem;">States of Power</h4><div class="pattern-grid">${lib.states_of_power.map(term => `<div class="pattern-chip ${p.selectedGems.includes(term) ? 'active' : ''}" data-term="${term}" onclick="window.toggleAspiration('${term}')">${term}</div>`).join('')}</div><button class="cta-btn mt-4" style="width:100%; margin-top:2rem;" onclick="handleNext()">Refine My Specifics</button></div>`;
     } else if (State.alchemyPhase === 'probe') {
         const formattedGems = formatGems(p.selectedGems);
-        return `<div class="glass-card fade-in"><div style="position:absolute; top:2rem; right:2rem; font-size:0.8rem; color:var(--text-dim);">Stage: Specification</div><h4 style="color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Chapter III</h4><h2 style="font-size:3rem;">Mastery of Specification</h2><div class="instruction-box" style="margin-bottom: 2rem; line-height:1.7;"><p style="color:var(--text-main); font-size:1.1rem; margin-bottom:1rem;">You have claimed your new foundation: <b>${formattedGems}</b>.</p><p style="color:var(--text-dim);">Now, we must articulate the <b>Master Blueprint</b>. How do these gems weave together into a single, luminous way of life? If you were living in the absolute flow of all these states, what would your inner world and your daily interactions actually look like? Narrate the vision of your expansion, letting one gem lead naturally into the next.</p></div><textarea id="main-input" placeholder="Narrate the vision of your expansion...">${p.probeText}</textarea><div class="voice-controls"><button class="mic-btn ${State.isRecording ? 'recording' : ''}" onclick="window.toggleMic()"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg></button><button class="cta-btn" onclick="handleNext()">Build Master Script</button></div></div>`;
+        return `<div class="glass-card fade-in"><div style="position:absolute; top:2rem; right:2rem; font-size:0.8rem; color:var(--text-dim);">Stage: Specification</div><h4 style="color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Chapter III</h4><h2 style="font-size:3rem;">Mastery of Specification</h2><div class="instruction-box" style="margin-bottom: 2rem; line-height:1.7;"><p style="color:var(--text-main); font-size:1.1rem; margin-bottom:1rem;">You have claimed your new foundation: <b>${formattedGems}</b>.</p><p style="color:var(--text-dim);">Now, we must articulate the <b>Master Blueprint</b>. How do these gems weave together into a single, luminous way of life? Narrate the vision of your expansion, letting one gem lead naturally into the next.</p></div><textarea id="main-input" placeholder="Narrate the vision of your expansion...">${p.probeText}</textarea><div class="voice-controls"><button class="mic-btn ${State.isRecording ? 'recording' : ''}" onclick="window.toggleMic()"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg></button><button class="cta-btn" onclick="handleNext()">Build Master Script</button></div></div>`;
     } else { // 'final' phase
         return `<div class="glass-card fade-in"><div style="position:absolute; top:2rem; right:2rem; font-size:0.8rem; color:var(--text-dim);">Stage: Master Script</div><h4 style="color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Chapter IV</h4><h2 style="font-size:3rem;">The Master Script</h2><div class="alchemical-bridge"><p style="font-size:1.1rem; margin-bottom:2rem; opacity:0.8;">I have alchemized your intentions into this Identity Blueprint. Polish it for perfection:</p><div style="background:rgba(45, 212, 191, 0.05); border:1px solid var(--accent); padding:2rem; border-radius:32px;"><textarea onchange="updateJewel(this.value)" style="background:transparent; border:none; color:var(--text-main); width:100%; font-size:1.4rem; line-height:1.7; padding:0; min-height:400px; font-weight:300; white-space:pre-wrap;">${p.jewel}</textarea></div></div><button class="cta-btn mt-4" style="width:100%; margin-top:2rem;" onclick="handleNext()">${State.pillarIndex < 6 ? 'Next Chapter' : 'Finalize Manifesto'}</button></div>`;
     }
 }
 
 function getManifestoView() {
-    const compiled = State.userData.pillars.filter(p => p.jewel).map(p => p.jewel).join("\n\n---\n\n");
+    const compiled = State.userData.pillars.filter(p => p.jewel).map(p => `### ${p.name}\n\n${p.jewel}`).join("\n\n---\n\n");
     const fullManifesto = `I AM THE CREATOR OF MY DESIRED REALITY.\n\nI have recognized the glass walls of my historical patterns and I have stepped beyond them. I am no longer the fish in the bowl; I am the expansion of the vast pond.\n\n${compiled}\n\nI move with absolute focus and effortless momentum. I am a Timeless Being living in Absolute Spirit. This is not who I am becoming; this is who I am.\n\nSO IT IS.`;
 
     return `<div class="glass-card fade-in">
         <h1>Ultimate Life Manifesto</h1>
         <div style="background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); padding:3rem; border-radius:32px; margin-top:2rem; font-size:1.2rem; line-height:1.8; white-space:pre-wrap; color:var(--text-main); font-weight:300;">${fullManifesto}</div>
         <button class="cta-btn mt-4" style="width:100%; margin-top:3rem;" onclick="window.print()">Print Master Script</button>
-        <button class="cta-btn mt-4" style="width:100%; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border);" onclick="if(confirm('Clear all progress?')) { localStorage.removeItem('id_alchemy_v18_9'); location.reload(); }">Reset Sanctuary</button>
+        <button class="cta-btn mt-4" style="width:100%; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border);" onclick="if(confirm('Clear all progress?')) { localStorage.removeItem('id_alchemy_v19_0'); location.reload(); }">Reset Sanctuary</button>
     </div>`;
 }
 
