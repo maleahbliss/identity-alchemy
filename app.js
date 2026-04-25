@@ -318,9 +318,36 @@ function synthesizeNarrative(p) {
             script += `I create radical value for the entire globe. My contribution flows with effortless momentum, a natural byproduct of my authentic authority and natural presence. Ideas and solutions come to me with profound ease, for I have mastered the alchemical balance between intention and surrender.\n\n`;
             script += `I produce Savant-level output with the ease of high-frequency thought. I know what I am creating, I know what I want, and I know exactly how to make it happen. I am the observer of my thoughts, choosing only those that fuel my expansion.\n\n`;
             script += `I attract masses of money and monetary wealth because of the massive impact I lead. I create exactly what the world needs, and the universe happily rewards me with abundance. I am the master of my morning and the architect of my day, leading from my most authentic brilliance.\n\n`;
-        } else {
-            script += `I embody the essence of my chosen gems, allowing my reality to expand into the vast pond of my potential. I move with absolute focus and effortless momentum, transmuting my intention into direct reality.\n\n`;
-            script += `I release the friction of the old story and step into the radiant expansion of my desired reality. This is not who I am becoming; this is who I am.\n\n`;
+        } else if (p.id === 'vocational') {
+            script += `I lead from the depth of my being, my impact a natural byproduct of my authenticity. I claim my place at the table with the quiet confidence of a master, moving with authentic authority and natural presence.\n\n`;
+            script += `My professional impact is a result of my authentic presence. I occupy only those spaces that resonate with my primal root, allowing my true zone of genius to shine without performance or mask.\n\n`;
+            script += `My contribution flows effortlessly into the world, creating massive, radical value for the entire globe. I am a visionary leader who pulls the future into the now through the power of my declaration.\n\n`;
+            script += `I produce work of exceptional quality with the ease of high-frequency focus. Every act of execution is a flawless expression of my savant-level output, leading others through the magnetism of my purpose.\n\n`;
+            script += `I move toward my legacy with the momentum of unshakeable intent. My work is a sanctuary of focus and fulfillment, creating a weightless impact that ripples out into the infinite tapestry of humanity.\n\n`;
+        } else if (p.id === 'wealth') {
+            script += `My financial life is a fortress of peace, security, and absolute autonomy. I release all friction around money, allowing abundance to flow in its natural current into my financial sanctuary.\n\n`;
+            script += `I am a magnet for wealth, seeing the opportunity for expansion in every moment. My reality is an infinite field of resources, always providing for my highest good with relaxed prosperity.\n\n`;
+            script += `I claim the divine right to own my time and direct my life with total freedom. My wealth is the engine of my absolute autonomy, allowing me to live a time-rich life of unmasked honesty.\n\n`;
+            script += `Value flows to me in high-resolution streams, independent of struggle. I transmute my highest brilliance into the gold of measurable impact, supported by the infinite bounty of my creations.\n\n`;
+            script += `I direct my resources with the precision of a master architect. I walk in the certainty that my needs are met before I even ask, living in the flow of universal abundance.\n\n`;
+        } else if (p.id === 'physical') {
+            script += `My body is a high-resolution vessel for my soul’s expansion. I am the architect of my own physical prime, radiating prime vitality and youthful energy.\n\n`;
+            script += `I move through the world with the grace and speed of a timeless being. My physical foundation is a sanctuary of alignment and strength, fueled by my connection to the source.\n\n`;
+            script += `I perform at my physical peak with the ease of focused presence. My body heals and renews itself in the stillness of my absolute peace, manifesting vibrant resilience.\n\n`;
+            script += `I honor my body as a sacred expression of universal intelligence. My stamina is an infinite well, carrying me through my work with kinetic ease and neuromuscular precision.\n\n`;
+            script += `I am the master of my physical habits, leading from my most authentic self. I embody the light of truth in every cell, existing in a state of biological masterpiece.\n\n`;
+        } else if (p.id === 'familial') {
+            script += `My home is a fortress of absolute peace and relational stillness. I am the anchor of calm in the midst of any domestic storm, creating a sanctuary of peace for all who enter.\n\n`;
+            script += `I build my relationships with the geometry of universal harmony. I listen from the depth of my being, creating deep emotional safety and domestic autonomy for my loved ones.\n\n`;
+            script += `My connection to my family is an unshakeable current of silent understanding. We are a symphony of individuals, moving in the flow of oneness and mutually supportive growth.\n\n`;
+            script += `I guide the next generation through the power of my own expansion. My home is the soil in which the souls of my loved ones flourish, nurtured by authentic love and honest partnership.\n\n`;
+            script += `I transmute friction into flow in every domestic interaction. I am the source of stability and growth, building a legacy of connection that endures beyond time.\n\n`;
+        } else if (p.id === 'social') {
+            script += `I exist in public exactly as I am, a beacon of radical authenticity. My presence is my power; I influence others by simply being my true self with unmasked presence.\n\n`;
+            script += `I attract those who resonate with the frequency of my expansion. My relationships are high-resolution mirrors of my soul's purpose, anchored in radical honesty and authentic connection.\n\n`;
+            script += `I am seen and heard in the light of my own truth. My words carry the weight of ancient wisdom and eternal focus, creating a quiet influence that ripples across the globe.\n\n`;
+            script += `I navigate the landscape of human interaction with effortless precision. I lead the world by the authority of my own expansion, anchored in unshakeable social ease.\n\n`;
+            script += `My life is a catalyst for global transformation. I am the social architect of a new reality, connecting disparate worlds with the ease of direct intuition and magnetic individualism.\n\n`;
         }
     }
 
