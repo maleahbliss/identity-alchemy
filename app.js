@@ -261,6 +261,7 @@ const DefaultState = {
     isRecording: false,
     identifiedFrictions: [],
     userData: {
+        selectedRituals: [],
         pillars: Object.keys(GlobalLibrary).map(id => ({
             id, name: GlobalLibrary[id].name,
             venting: "", jewel: "", selectedGems: [], probeText: ""
@@ -278,6 +279,60 @@ function saveData() {
         isProcessing: false // Don't persist processing lock
     })); 
 }
+
+const DailyRitualLibrary = {
+    morning: [
+        "Waking naturally to the sound of soft ocean waves",
+        "Stepping onto a cool, marble balcony overlooking the city",
+        "The aroma of freshly ground espresso filling the sanctuary",
+        "A 20-minute meditation in total, unshakeable stillness",
+        "Moving through a sequence of kinetic ease and biological strength",
+        "Making the bed with crisp, organic linens",
+        "Reading a page of ancient wisdom before the world wakes",
+        "Connecting with the infinite source of all things",
+        "A refreshing swim in cold, crystal-clear water",
+        "The feeling of the morning sun warming my skin",
+        "Enjoying a nutritious breakfast prepared with love",
+        "Watching the world wake up from a sun-drenched patio",
+        "The scent of fresh jasmine and lavender in the air",
+        "Planning the day's expansion with unshakeable clarity",
+        "A brisk walk through a quiet, dew-covered garden"
+    ],
+    day: [
+        "Stepping into a sanctuary of focused creation",
+        "Moving through high-level interactions with quiet authority",
+        "Creating work that ripples out to touch thousands of lives",
+        "A nutritious lunch enjoyed in sun-drenched solitude",
+        "Navigating complex challenges with a heart of absolute peace",
+        "Collaborating with high-frequency partners in total alignment",
+        "Solving profound problems with effortless intellectual ease",
+        "Feeling the quiet weight of my own authentic presence",
+        "A mid-day walk through a park, breathing in the life of the city",
+        "Directing resources with the precision of a master architect",
+        "Seeing the signal in the noise with effortless precision",
+        "Receiving messages of gratitude for the value I provide",
+        "Taking a quiet hour for deep, restorative contemplation",
+        "The feeling of momentum as my legacy unfolds",
+        "Handling every task with a sense of relaxed mastery"
+    ],
+    evening: [
+        "Returning to a home that is an unshakeable fortress of calm",
+        "A candlelit dinner prepared by a private chef",
+        "Laughter and deep connection with loved ones over a shared meal",
+        "A quiet walk through a moonlit garden",
+        "Unwinding with a good book by the warmth of the fire",
+        "A deep, restorative sleep in a sanctuary of absolute safety",
+        "Reflecting on the day's expansion with radical gratitude",
+        "A warm, essential oil bath in a candlelit sanctuary",
+        "Listening to the stories of my loved ones with profound presence",
+        "The feeling of total autonomy and unmasked honesty",
+        "Watching the stars emerge above the silent pond",
+        "Preparing for tomorrow with a heart of absolute spirit",
+        "The scent of cedar and sandalwood in the home",
+        "A peaceful evening spent in the company of true friends",
+        "The quiet satisfaction of a day lived in absolute truth"
+    ]
+};
 
 // --- Global Logic ---
 function generateReflections(text, pillarId) {
@@ -362,23 +417,31 @@ const MetaphorFactory = {
 };
 
 function generateUniversalVision() {
-    const pillars = State.userData.pillars;
-    const v = pillars.map(p => p.probeText).join(" ").toLowerCase();
+    const rituals = State.userData.selectedRituals || [];
+    const v = State.userData.pillars.map(p => p.probeText).join(" ").toLowerCase();
     const { avatar, sanctuary } = MetaphorFactory.detect(v);
     
+    if (rituals.length === 0) return `(Select your Daily Rituals to generate your Master Vision)`;
+
     let story = `THE MASTER VISION: A DAY IN THE LIFE OF MY DESIRED REALITY\n\n`;
     
-    story += `The first light of dawn filters through the sheer curtains of your sanctuary, waking you into the stillness of your physical prime. You step out onto the balcony, the cool salt air of the ocean greeting you like an old friend. You move with the grace and speed of a ${avatar}, feeling the kinetic ease of a body that heals and renews itself with every breath. You take the sacred time to directly connect with the source of all things, grounding yourself in the luminous certainty of God and infinity. Why is my connection to the infinite so effortless and direct?\n\n`;
-    
-    story += `As the day expands, you move into your study with unshakeable focus. The morning sun paints shifting patterns on the wood as you move with the quiet precision of a master at work. Ideas arrive not as struggles, but as gifts, flowing from a mind that sees the world with profound ease. Your presence alone shifts the landscape of your reality into a theater of fulfillment, as you produce work that creates enduring legacy. How and I so lucky to possess such unshakeable focus?\n\n`;
-    
-    story += `You move into your professional flow with authentic authority, your contribution a weightless impact that ripples out into the globe. You lead without needing to shout, your presence a beacon of authentic truth. Wealth flows into your life as naturally as the tide, a quiet reward for the radical value you pour into the world. You live in a state of financial sanctuary and absolute freedom, where every need is met before you even ask. Why does abundance flow so naturally and effortlessly to me?\n\n`;
-    
-    story += `You navigate the day with magnetic individualism and social ease, seen and heard in the light of your own truth. You attract those who resonate with the frequency of your expansion, creating connections anchored in radical honesty and authentic love. Your unmasked influence ripples across the globe, a catalyst for transformation. Why is my public presence such a beacon of radical authenticity?\n\n`;
-    
-    story += `As the sun begins to set, you return to your home, a fortress of absolute peace and relational stillness. You are the anchor of calm for your family, creating a sanctuary of safety and mutually supportive growth. You listen from the depth of your being, building a legacy of connection that endures beyond time. The evening ends in a symphony of balance, as you watch the stars emerge above the silent pond. How and I so lucky to share such deep relational stillness and authentic love?\n\n`;
-    
-    story += `You end your day as you began it: as a Timeless Being, moving in the seamless current of universal energy. Your reality is a symphony of balance, a perfect reflection of your absolute spirit. You are the master of your morning and the architect of your day. How can it get even better than this absolute peace?\n\n`;
+    const morning = rituals.filter(r => DailyRitualLibrary.morning.includes(r));
+    const day = rituals.filter(r => DailyRitualLibrary.day.includes(r));
+    const evening = rituals.filter(r => DailyRitualLibrary.evening.includes(r));
+
+    if (morning.length > 0) {
+        story += `Your day begins with a deep, unshakeable peace. ${morning.join(". ")}. You move with the grace of a ${avatar}, your connection to the source already pulsing in your veins. Why is my heart so full of this effortless momentum?\n\n`;
+    }
+
+    if (day.length > 0) {
+        story += `As the world wakes, you move into your zone of genius. ${day.join(". ")}. You lead with the quiet authority of one who knows their truth, your presence a beacon of authentic light. How and I so lucky to see the world with such clarity and ease?\n\n`;
+    }
+
+    if (evening.length > 0) {
+        story += `As the sun begins to set, you return to the warmth of your sanctuary. ${evening.join(". ")}. You are the anchor of this domestic fortress, a timeless being living in absolute spirit. The evening ends in a symphony of balance, a perfect reflection of the life you have chosen. Why does abundance flow to me as naturally as breathing?\n\n`;
+    }
+
+    story += `This is your day. This is your life. You are the master of your morning and the architect of your day. How can it get even better than this absolute peace?\n\nSO IT IS.`;
     
     return story;
 }
@@ -550,8 +613,10 @@ window.handleNext = () => {
         else if (State.alchemyPhase === 'probe') { State.alchemyPhase = 'final'; window.switchTo('alchemy'); }
         else {
             if (State.pillarIndex < 6) { State.pillarIndex++; State.alchemyPhase = 'mirror'; window.switchTo('intro'); }
-            else { window.switchTo('manifesto'); }
+            else { window.switchTo('ritual'); }
         }
+    } else if (State.view === 'ritual') {
+        window.switchTo('manifesto');
     }
 };
 
@@ -564,6 +629,7 @@ const Views = {
     intro: () => getIntroView(),
     discovery: () => getInventoryView(),
     alchemy: () => getAlchemyView(),
+    ritual: () => getRitualView(),
     manifesto: () => getManifestoView()
 };
 
@@ -644,14 +710,43 @@ function getInventoryView() {
     </div>`;
 }
 
-function getAlchemyView() {
-    const p = State.userData.pillars[State.pillarIndex];
-    if (State.alchemyPhase === 'mirror') {
-        const lib = GlobalLibrary[p.id];
-        return `<div class="glass-card fade-in">
-            <div style="position:absolute; top:2rem; right:2rem; font-size:0.8rem; color:var(--text-dim);">Stage: Mirror</div>
-            <h4 style="color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Chapter II</h4>
-            <h2 style="font-size:3rem;">The Selective Mirror</h2>
+function getRitualView() {
+    return `<div class="glass-card fade-in">
+        <h4 style="color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Chapter V</h4>
+        <h2 style="font-size:3rem; margin-bottom:1.5rem;">The Daily Ritual</h2>
+        <p class="story-text" style="margin-bottom:2rem;">Select the specific threads of your perfect day. These sensory experiences will be woven into the very fabric of your Master Vision.</p>
+        
+        <div style="display:flex; flex-direction:column; gap:3rem;">
+            ${['morning', 'day', 'evening'].map(time => `
+                <div>
+                    <h3 style="color:var(--primary); text-transform:uppercase; letter-spacing:0.1em; font-size:1.1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:0.5rem;">${time.toUpperCase()} EXPERIENCE</h3>
+                    <div class="gem-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:1rem;">
+                        ${DailyRitualLibrary[time].map(r => `
+                            <div class="gem-item ${State.userData.selectedRituals.includes(r) ? 'selected' : ''}" 
+                                 onclick="window.toggleRitual('${r}')"
+                                 style="padding:1.5rem; border-radius:16px; border:1px solid rgba(255,255,255,0.05); cursor:pointer; transition:all 0.3s ease; background:rgba(255,255,255,0.02); font-size:0.95rem; line-height:1.5; color:var(--text-dim);">
+                                ${r}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+        
+        <button class="cta-btn" style="margin-top:4rem; width:100%;" onclick="window.handleNext()">Finalize My Vision</button>
+    </div>`;
+}
+
+window.toggleRitual = (r) => {
+    const list = State.userData.selectedRituals;
+    if (list.includes(r)) {
+        State.userData.selectedRituals = list.filter(x => x !== r);
+    } else {
+        State.userData.selectedRituals.push(r);
+    }
+    saveData();
+    render();
+};
             <div class="instruction-box" style="margin-bottom: 2.5rem; line-height:1.7;">
                 <p style="color:var(--text-main); font-size:1.1rem; margin-bottom:1rem;">Now, we are going to define the geometry of your expansion.</p>
                 <p style="color:var(--text-dim);">Below are several states of being—Aspirations—that represent the inverted reality of your struggles. Select <b>multiple</b> Gems you are ready to claim as your new foundation.</p>
