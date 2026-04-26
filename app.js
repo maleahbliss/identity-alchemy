@@ -276,22 +276,22 @@ const State = JSON.parse(localStorage.getItem(STORAGE_KEY)) || DefaultState;
 if (!State.userData) State.userData = { selectedRituals: [], pillars: [], smallBets: [] };
 if (!State.userData.selectedRituals) State.userData.selectedRituals = [];
 
-function saveData() { 
+window.saveData = () => { 
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
         ...State,
         isRecording: false, // Don't persist recording state
         isProcessing: false // Don't persist processing lock
     })); 
-}
+};
 
-function render() {
+window.render = () => {
     const main = document.getElementById('main-content');
     if (!main) return;
     const viewFunc = Views[State.view];
     if (viewFunc) {
         main.innerHTML = viewFunc();
     }
-}
+};
 
 const DailyRitualLibrary = {
     morning: [
@@ -617,8 +617,8 @@ window.toggleAspiration = (term) => {
     const p = State.userData.pillars[State.pillarIndex];
     const idx = p.selectedGems.indexOf(term);
     if (idx > -1) p.selectedGems.splice(idx, 1); else p.selectedGems.push(term);
-    document.querySelectorAll(`.pattern-chip[data-term="${term}"]`).forEach(c => c.classList.toggle('active'));
-    saveData();
+    window.saveData();
+    window.render();
 };
 
 window.handleNext = () => {
@@ -636,7 +636,7 @@ window.handleNext = () => {
     }
 };
 
-window.updateJewel = (val) => { State.userData.pillars[State.pillarIndex].jewel = val; saveData(); };
+window.updateJewel = (val) => { State.userData.pillars[State.pillarIndex].jewel = val; window.saveData(); };
 
 // --- VIEW COMPARTMENTS ---
 const Views = {
@@ -650,13 +650,16 @@ const Views = {
 };
 
 function getWelcomeView() {
+    const hasProgress = State.userData.pillars.some(p => p.venting || p.selectedGems.length > 0);
+    const resumeAction = (State.view === 'welcome' && hasProgress) ? "window.switchTo('discovery')" : "window.switchTo(State.view)";
+    
     return `<div class="hero">
         <h1>Identity Alchemy</h1>
-        <p class="subtitle" style="color:var(--accent);">v19.0.5 Persistent Flow</p>
+        <p class="subtitle" style="color:var(--accent);">v19.1.0 Total Stability</p>
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
         <div style="display:flex; flex-direction:column; gap:1rem; align-items:center; margin-top:2rem;">
             <button class="cta-btn" onclick="window.switchTo('science')" style="width:280px;">Enter the Sanctuary</button>
-            <button class="cta-btn" onclick="window.render()" style="width:280px; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border); box-shadow:none;">Resume My Expansion</button>
+            <button class="cta-btn" onclick="${resumeAction}" style="width:280px; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border); box-shadow:none;">Resume My Expansion</button>
         </div>
     </div>`;
 }
@@ -768,8 +771,8 @@ window.toggleRitual = (el) => {
     } else {
         State.userData.selectedRituals.push(r);
     }
-    saveData();
-    render();
+    window.saveData();
+    window.render();
 };
 
 function getAlchemyView() {
@@ -830,7 +833,7 @@ function getAlchemyView() {
 function getManifestoView() {
     return `<div class="glass-card fade-in">
         <h1 style="margin-bottom:1rem;">Ultimate Life Manifesto</h1>
-        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v19.0.5 Persistent Flow</p>
+        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v19.1.0 Total Stability</p>
         ${renderFinalJewel()}
         <div style="margin-top:4rem; padding:2rem; border-top:1px solid var(--glass-border); text-align:center;">
             <p class="story-text" style="font-style:italic; opacity:0.8;">"This is not who I am becoming; this is who I am."</p>
