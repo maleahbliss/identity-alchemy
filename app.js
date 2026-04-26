@@ -621,6 +621,34 @@ window.toggleAspiration = (term) => {
     window.render();
 };
 
+window.resumeJourney = () => {
+    const pillars = State.userData.pillars;
+    // Check if all pillars are complete
+    const allPillarsDone = pillars.every(p => p.jewel);
+    if (allPillarsDone) {
+        window.switchTo('ritual');
+        return;
+    }
+
+    // Find first incomplete pillar
+    const i = pillars.findIndex(p => !p.jewel);
+    State.pillarIndex = i;
+    
+    const p = pillars[i];
+    if (!p.venting) {
+        window.switchTo('discovery');
+    } else if (p.selectedGems.length === 0) {
+        State.alchemyPhase = 'mirror';
+        window.switchTo('alchemy');
+    } else if (!p.probeText) {
+        State.alchemyPhase = 'probe';
+        window.switchTo('alchemy');
+    } else {
+        State.alchemyPhase = 'final';
+        window.switchTo('alchemy');
+    }
+};
+
 window.handleNext = () => {
     syncInput(); 
     if (State.view === 'discovery') { State.alchemyPhase = 'mirror'; window.switchTo('alchemy'); }
@@ -651,15 +679,14 @@ const Views = {
 
 function getWelcomeView() {
     const hasProgress = State.userData.pillars.some(p => p.venting || p.selectedGems.length > 0);
-    const resumeAction = (State.view === 'welcome' && hasProgress) ? "window.switchTo('discovery')" : "window.switchTo(State.view)";
     
     return `<div class="hero">
         <h1>Identity Alchemy</h1>
-        <p class="subtitle" style="color:var(--accent);">v19.1.0 Total Stability</p>
+        <p class="subtitle" style="color:var(--accent);">v19.1.1 Resonance Path</p>
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
         <div style="display:flex; flex-direction:column; gap:1rem; align-items:center; margin-top:2rem;">
             <button class="cta-btn" onclick="window.switchTo('science')" style="width:280px;">Enter the Sanctuary</button>
-            <button class="cta-btn" onclick="${resumeAction}" style="width:280px; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border); box-shadow:none;">Resume My Expansion</button>
+            <button class="cta-btn" onclick="window.resumeJourney()" style="width:280px; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border); box-shadow:none;">Resume My Expansion</button>
         </div>
     </div>`;
 }
@@ -833,7 +860,7 @@ function getAlchemyView() {
 function getManifestoView() {
     return `<div class="glass-card fade-in">
         <h1 style="margin-bottom:1rem;">Ultimate Life Manifesto</h1>
-        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v19.1.0 Total Stability</p>
+        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v19.1.1 Resonance Path</p>
         ${renderFinalJewel()}
         <div style="margin-top:4rem; padding:2rem; border-top:1px solid var(--glass-border); text-align:center;">
             <p class="story-text" style="font-style:italic; opacity:0.8;">"This is not who I am becoming; this is who I am."</p>
