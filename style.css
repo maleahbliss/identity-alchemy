@@ -139,3 +139,31 @@ textarea:focus { outline: none; border-color: var(--accent); }
 .manifesto-section { margin-bottom: 4rem; }
 .manifesto-pillar { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem; }
 .manifesto-content { font-size: 1.5rem; font-weight: 300; line-height: 1.7; }
+
+/* Daily Ritual Selection Styles */
+.gem-grid { margin-top: 1rem; }
+.gem-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    user-select: none;
+    border: 1px solid var(--glass-border) !important;
+}
+.gem-item:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.gem-item.selected {
+    background: var(--accent-glow) !important;
+    border-color: var(--accent) !important;
+    color: var(--text-main) !important;
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+.gem-item.selected::after {
+    content: "✓";
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--accent);
+    font-weight: 700;
+}
