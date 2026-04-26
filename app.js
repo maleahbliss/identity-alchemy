@@ -565,6 +565,10 @@ const VoiceController = {
 // --- Interface Routing ---
 window.switchTo = (v) => { 
     syncInput(); VoiceController.stop(); State.view = v; 
+    
+    // Safety check for ritual state initialization
+    if (!State.userData.selectedRituals) State.userData.selectedRituals = [];
+    
     const main = document.getElementById('main-content');
     if (v === 'welcome') State.pillarIndex = 0;
     if (v === 'intro') { State.alchemyPhase = 'mirror'; }
@@ -636,7 +640,7 @@ const Views = {
 function getWelcomeView() {
     return `<div class="hero">
         <h1>Identity Alchemy</h1>
-        <p class="subtitle" style="color:var(--accent);">v18.9.8 The Daily Ritual</p>
+        <p class="subtitle" style="color:var(--accent);">v18.9.9 The Daily Ritual</p>
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
         <div style="display:flex; gap:1.5rem; justify-content:center; margin-top:2rem;">
             <button class="cta-btn" onclick="window.switchTo('science')">Enter the Sanctuary</button>
@@ -722,7 +726,7 @@ function getRitualView() {
                     <h3 style="color:var(--primary); text-transform:uppercase; letter-spacing:0.1em; font-size:1.1rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:0.5rem;">${time.toUpperCase()} EXPERIENCE</h3>
                     <div class="gem-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:1rem;">
                         ${DailyRitualLibrary[time].map(r => `
-                            <div class="gem-item ${State.userData.selectedRituals.includes(r) ? 'selected' : ''}" 
+                            <div class="gem-item ${(State.userData.selectedRituals || []).includes(r) ? 'selected' : ''}" 
                                  onclick="window.toggleRitual('${r}')"
                                  style="padding:1.5rem; border-radius:16px; border:1px solid rgba(255,255,255,0.05); cursor:pointer; transition:all 0.3s ease; background:rgba(255,255,255,0.02); font-size:0.95rem; line-height:1.5; color:var(--text-dim);">
                                 ${r}
@@ -806,7 +810,7 @@ function getAlchemyView() {
 function getManifestoView() {
     return `<div class="glass-card fade-in">
         <h1 style="margin-bottom:1rem;">Ultimate Life Manifesto</h1>
-        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v18.9.8 The Universal Scribe</p>
+        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v18.9.9 The Universal Scribe</p>
         ${renderFinalJewel()}
         <div style="margin-top:4rem; padding:2rem; border-top:1px solid var(--glass-border); text-align:center;">
             <p class="story-text" style="font-style:italic; opacity:0.8;">"This is not who I am becoming; this is who I am."</p>
