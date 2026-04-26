@@ -445,12 +445,12 @@ function generateUniversalVision() {
     // 1. MORNING
     const isLateRiser = rituals.some(r => r.includes("10 AM") || r.includes("late morning") || r.includes("brunch"));
     if (isLateRiser) {
-        story = "The mid-morning sun fills the room with a warm light. You wake up naturally, feeling rested and ready for the day. The house is quiet and peaceful. ";
+        story = "The mid-morning sun fills the room with a warm light. You wake up naturally, feeling rested and ready for the day. As you look around your quiet, peaceful home, you think to yourself, 'Why is my life so good? Why does everything happen so easily for me?' ";
     } else {
-        story = "The first light of the morning enters the room, and you wake up with a clear mind. Everything is quiet and calm. ";
+        story = "The first light of the morning enters the room, and you wake up with a clear mind. Everything is quiet and calm. In the stillness, you think to yourself, 'Why is my life so good? Why does everything happen so easily for me?' ";
     }
     
-    story += "Why is my life so good? Why does everything happen so easily for me? These thoughts feel true as you start your morning. ";
+    story += "These thoughts feel true as you start your morning. ";
 
     // 2. RITUALS
     const morningNature = rl.filter(r => r.includes("ocean") || r.includes("water") || r.includes("balcony") || r.includes("air") || r.includes("trees") || r.includes("sunrise") || r.includes("mountain") || r.includes("waves"));
@@ -463,17 +463,17 @@ function generateUniversalVision() {
         if (rl.includes("walking by the ocean")) natureItems.push("a walk by the ocean");
         if (rl.includes("coffee on your balcony") || rl.includes("looking out over the water")) natureItems.push("the view from the balcony");
         if (rl.includes("trees") || rl.includes("mountain")) natureItems.push("the quiet trees around the house");
-        story += "The day begins with " + natureItems.join(" and ") + ". Fresh air and a beautiful view remind you how lucky you are. ";
+        story += "The day begins with " + natureItems.join(" and ") + ". As you take in the fresh air and the beautiful view, you find yourself wondering, 'Why am I so lucky? How can it get even better than this?' ";
     }
 
     if (morningSpirit.length > 0) {
         if (rl.includes("meditation")) story += "A quiet meditation helps you feel centered. ";
         if (rl.includes("journaling")) story += "Writing down your plans makes everything feel certain. ";
-        story += "Why am I so lucky? How can it get even better than this? You feel ready for whatever the day brings. ";
+        story += "You feel ready for whatever the day brings. ";
     }
 
     // 3. THE DAY
-    story += "\n\nAs the day moves forward, you step into your work as a leader. Why am I so good at making and keeping money? Success comes naturally to you. ";
+    story += "\n\nAs the day moves forward, you step into your work as a leader. Watching your ideas come to life, you think to yourself, 'Why am I so good at making and keeping money?' Success feels like a natural part of who you are. ";
     
     const dayCreative = rl.filter(r => r.includes("love") || r.includes("meaningful") || r.includes("ideas") || r.includes("creative"));
     const dayAuthority = rl.filter(r => r.includes("conversations") || r.includes("leading") || r.includes("team") || r.includes("help others"));
@@ -485,10 +485,10 @@ function generateUniversalVision() {
         story += "Honest conversations and clear leadership move your team forward. ";
     }
     
-    story += "Why does abundance flow so naturally to me? You see the proof in your clear decisions and the freedom you have over your time. ";
+    story += "During a quiet moment, you find yourself asking, 'Why does abundance flow so naturally to me?' You see the proof in your clear decisions and the freedom you have over your time. ";
 
     // 4. EVENING
-    story += "\n\nWhen the sun goes down, you return to the comfort of your home. Why do I always feel so good? A deep sense of gratitude is with you all evening. ";
+    story += "\n\nWhen the sun goes down, you return to the comfort of your home. Watching the colors change in the sky, you think, 'Why do I always feel so good?' A deep sense of gratitude is with you all evening. ";
     
     const eveningAbundance = rl.filter(r => r.includes("dinner") || r.includes("wine") || r.includes("friends") || r.includes("chef"));
     const eveningStillness = rl.filter(r => r.includes("sunset") || r.includes("stars") || r.includes("midnight") || r.includes("beach at night") || r.includes("fire"));
@@ -500,11 +500,12 @@ function generateUniversalVision() {
         story += "Walking under the stars at midnight, the quiet world reflects your own peace. The sound of the ocean at night helps you feel clear and happy. ";
     }
     
-    story += "As the day ends, a deep sleep brings rest. You know that you are safe, loved, and supported. ";
+    story += "As the day ends, you prepare for a deep sleep. You think about how safe, loved, and supported you are. ";
 
     story += "\n\nThis is not just a story; it is your life. You know what you are creating, and you know it is already happening. So it is.";
     return story;
 }
+
 
 
 
