@@ -636,7 +636,7 @@ const Views = {
 function getWelcomeView() {
     return `<div class="hero">
         <h1>Identity Alchemy</h1>
-        <p class="subtitle" style="color:var(--accent);">v18.8.1 Harmonic Restoration</p>
+        <p class="subtitle" style="color:var(--accent);">v18.9.8 The Daily Ritual</p>
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
         <div style="display:flex; gap:1.5rem; justify-content:center; margin-top:2rem;">
             <button class="cta-btn" onclick="window.switchTo('science')">Enter the Sanctuary</button>
@@ -747,6 +747,15 @@ window.toggleRitual = (r) => {
     saveData();
     render();
 };
+
+function getAlchemyView() {
+    const p = State.userData.pillars[State.pillarIndex];
+    if (State.alchemyPhase === 'mirror') {
+        const lib = GlobalLibrary[p.id];
+        return `<div class="glass-card fade-in">
+            <div style="position:absolute; top:2rem; right:2rem; font-size:0.8rem; color:var(--text-dim);">Stage: Mirror</div>
+            <h4 style="color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Chapter II</h4>
+            <h2 style="font-size:3rem;">The Selective Mirror</h2>
             <div class="instruction-box" style="margin-bottom: 2.5rem; line-height:1.7;">
                 <p style="color:var(--text-main); font-size:1.1rem; margin-bottom:1rem;">Now, we are going to define the geometry of your expansion.</p>
                 <p style="color:var(--text-dim);">Below are several states of being—Aspirations—that represent the inverted reality of your struggles. Select <b>multiple</b> Gems you are ready to claim as your new foundation.</p>
@@ -797,7 +806,7 @@ window.toggleRitual = (r) => {
 function getManifestoView() {
     return `<div class="glass-card fade-in">
         <h1 style="margin-bottom:1rem;">Ultimate Life Manifesto</h1>
-        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v18.9.3 The Universal Scribe</p>
+        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v18.9.8 The Universal Scribe</p>
         ${renderFinalJewel()}
         <div style="margin-top:4rem; padding:2rem; border-top:1px solid var(--glass-border); text-align:center;">
             <p class="story-text" style="font-style:italic; opacity:0.8;">"This is not who I am becoming; this is who I am."</p>
