@@ -272,6 +272,10 @@ const DefaultState = {
 
 const State = JSON.parse(localStorage.getItem(STORAGE_KEY)) || DefaultState;
 
+// Force-initialization for v19.0.1 compatibility
+if (!State.userData) State.userData = { selectedRituals: [], pillars: [], smallBets: [] };
+if (!State.userData.selectedRituals) State.userData.selectedRituals = [];
+
 function saveData() { 
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
         ...State,
@@ -640,7 +644,7 @@ const Views = {
 function getWelcomeView() {
     return `<div class="hero">
         <h1>Identity Alchemy</h1>
-        <p class="subtitle" style="color:var(--accent);">v19.0.0 The Sensory Truth</p>
+        <p class="subtitle" style="color:var(--accent);">v19.0.1 The Sensory Truth</p>
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
         <div style="display:flex; gap:1.5rem; justify-content:center; margin-top:2rem;">
             <button class="cta-btn" onclick="window.switchTo('science')">Enter the Sanctuary</button>
@@ -744,13 +748,16 @@ function getRitualView() {
 
 window.toggleRitual = (el) => {
     const r = el.getAttribute('data-ritual');
+    if (!State.userData.selectedRituals) State.userData.selectedRituals = [];
     const list = State.userData.selectedRituals;
-    if (list.includes(r)) {
-        State.userData.selectedRituals = list.filter(x => x !== r);
+    const idx = list.indexOf(r);
+    if (idx > -1) {
+        State.userData.selectedRituals.splice(idx, 1);
+        el.classList.remove('selected');
     } else {
         State.userData.selectedRituals.push(r);
+        el.classList.add('selected');
     }
-    el.classList.toggle('selected');
     saveData();
 };
 
@@ -812,7 +819,7 @@ function getAlchemyView() {
 function getManifestoView() {
     return `<div class="glass-card fade-in">
         <h1 style="margin-bottom:1rem;">Ultimate Life Manifesto</h1>
-        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v19.0.0 The Sensory Scribe</p>
+        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v19.0.1 The Sensory Scribe</p>
         ${renderFinalJewel()}
         <div style="margin-top:4rem; padding:2rem; border-top:1px solid var(--glass-border); text-align:center;">
             <p class="story-text" style="font-style:italic; opacity:0.8;">"This is not who I am becoming; this is who I am."</p>
