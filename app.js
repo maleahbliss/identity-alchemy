@@ -282,55 +282,55 @@ function saveData() {
 
 const DailyRitualLibrary = {
     morning: [
-        "Waking naturally to the sound of soft ocean waves",
-        "Stepping onto a cool, marble balcony overlooking the city",
-        "The aroma of freshly ground espresso filling the sanctuary",
-        "A 20-minute meditation in total, unshakeable stillness",
-        "Moving through a sequence of kinetic ease and biological strength",
-        "Making the bed with crisp, organic linens",
-        "Reading a page of ancient wisdom before the world wakes",
-        "Connecting with the infinite source of all things",
-        "A refreshing swim in cold, crystal-clear water",
-        "The feeling of the morning sun warming my skin",
-        "Enjoying a nutritious breakfast prepared with love",
-        "Watching the world wake up from a sun-drenched patio",
-        "The scent of fresh jasmine and lavender in the air",
-        "Planning the day's expansion with unshakeable clarity",
-        "A brisk walk through a quiet, dew-covered garden"
+        "Waking up naturally with no alarm",
+        "Walking by the ocean in the early light",
+        "Drinking coffee on my balcony",
+        "Looking out over the water",
+        "Coffee in my mountain home",
+        "A simple, quiet meditation",
+        "Making my bed",
+        "Reading a book in the quiet",
+        "The sound of waves outside my window",
+        "Stepping out into the fresh morning air",
+        "A long, hot shower",
+        "Journaling my thoughts for the day",
+        "A healthy breakfast at home",
+        "Watching the sunrise",
+        "A peaceful walk through the trees"
     ],
     day: [
-        "Stepping into a sanctuary of focused creation",
-        "Moving through high-level interactions with quiet authority",
-        "Creating work that ripples out to touch thousands of lives",
-        "A nutritious lunch enjoyed in sun-drenched solitude",
-        "Navigating complex challenges with a heart of absolute peace",
-        "Collaborating with high-frequency partners in total alignment",
-        "Solving profound problems with effortless intellectual ease",
-        "Feeling the quiet weight of my own authentic presence",
-        "A mid-day walk through a park, breathing in the life of the city",
-        "Directing resources with the precision of a master architect",
-        "Seeing the signal in the noise with effortless precision",
-        "Receiving messages of gratitude for the value I provide",
-        "Taking a quiet hour for deep, restorative contemplation",
-        "The feeling of momentum as my legacy unfolds",
-        "Handling every task with a sense of relaxed mastery"
+        "Working on things I love",
+        "Having deep, honest conversations",
+        "Creating something meaningful",
+        "A quiet lunch by myself",
+        "Leading my team with ease",
+        "Solving problems quickly",
+        "Feeling productive and focused",
+        "Collaborating with people I trust",
+        "Taking a walk in the sun",
+        "Managing my time perfectly",
+        "Seeing my ideas come to life",
+        "Helping others grow",
+        "Spending time in nature",
+        "Making clear, confident decisions",
+        "Feeling a sense of total freedom"
     ],
     evening: [
-        "Returning to a home that is an unshakeable fortress of calm",
-        "A candlelit dinner prepared by a private chef",
-        "Laughter and deep connection with loved ones over a shared meal",
-        "A quiet walk through a moonlit garden",
-        "Unwinding with a good book by the warmth of the fire",
-        "A deep, restorative sleep in a sanctuary of absolute safety",
-        "Reflecting on the day's expansion with radical gratitude",
-        "A warm, essential oil bath in a candlelit sanctuary",
-        "Listening to the stories of my loved ones with profound presence",
-        "The feeling of total autonomy and unmasked honesty",
-        "Watching the stars emerge above the silent pond",
-        "Preparing for tomorrow with a heart of absolute spirit",
-        "The scent of cedar and sandalwood in the home",
-        "A peaceful evening spent in the company of true friends",
-        "The quiet satisfaction of a day lived in absolute truth"
+        "Dinner at home with a private chef",
+        "Looking at the sunset",
+        "Walking on the beach at night",
+        "A quiet evening by the fire",
+        "Deep connection with my family",
+        "Watching the stars",
+        "A warm bath to end the day",
+        "Reading before bed",
+        "Total peace in my home",
+        "Planning a beautiful tomorrow",
+        "Living in my beach home",
+        "Good food and good wine with friends",
+        "A long, restorative sleep",
+        "Feeling grateful for my life",
+        "Absolute stillness as the day ends"
     ]
 };
 
@@ -640,7 +640,7 @@ const Views = {
 function getWelcomeView() {
     return `<div class="hero">
         <h1>Identity Alchemy</h1>
-        <p class="subtitle" style="color:var(--accent);">v18.9.9 The Daily Ritual</p>
+        <p class="subtitle" style="color:var(--accent);">v19.0.0 The Sensory Truth</p>
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
         <div style="display:flex; gap:1.5rem; justify-content:center; margin-top:2rem;">
             <button class="cta-btn" onclick="window.switchTo('science')">Enter the Sanctuary</button>
@@ -727,7 +727,8 @@ function getRitualView() {
                     <div class="gem-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:1rem;">
                         ${DailyRitualLibrary[time].map(r => `
                             <div class="gem-item ${(State.userData.selectedRituals || []).includes(r) ? 'selected' : ''}" 
-                                 onclick="window.toggleRitual('${r}')"
+                                 onclick="window.toggleRitual(this)"
+                                 data-ritual="${r}"
                                  style="padding:1.5rem; border-radius:16px; border:1px solid rgba(255,255,255,0.05); cursor:pointer; transition:all 0.3s ease; background:rgba(255,255,255,0.02); font-size:0.95rem; line-height:1.5; color:var(--text-dim);">
                                 ${r}
                             </div>
@@ -741,15 +742,16 @@ function getRitualView() {
     </div>`;
 }
 
-window.toggleRitual = (r) => {
+window.toggleRitual = (el) => {
+    const r = el.getAttribute('data-ritual');
     const list = State.userData.selectedRituals;
     if (list.includes(r)) {
         State.userData.selectedRituals = list.filter(x => x !== r);
     } else {
         State.userData.selectedRituals.push(r);
     }
+    el.classList.toggle('selected');
     saveData();
-    render();
 };
 
 function getAlchemyView() {
@@ -810,7 +812,7 @@ function getAlchemyView() {
 function getManifestoView() {
     return `<div class="glass-card fade-in">
         <h1 style="margin-bottom:1rem;">Ultimate Life Manifesto</h1>
-        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v18.9.9 The Universal Scribe</p>
+        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v19.0.0 The Sensory Scribe</p>
         ${renderFinalJewel()}
         <div style="margin-top:4rem; padding:2rem; border-top:1px solid var(--glass-border); text-align:center;">
             <p class="story-text" style="font-style:italic; opacity:0.8;">"This is not who I am becoming; this is who I am."</p>
