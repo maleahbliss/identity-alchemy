@@ -652,10 +652,11 @@ const Views = {
 function getWelcomeView() {
     return `<div class="hero">
         <h1>Identity Alchemy</h1>
-        <p class="subtitle" style="color:var(--accent);">v19.0.4 Adaptive Flow</p>
+        <p class="subtitle" style="color:var(--accent);">v19.0.5 Persistent Flow</p>
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
-        <div style="display:flex; gap:1.5rem; justify-content:center; margin-top:2rem;">
-            <button class="cta-btn" onclick="window.switchTo('science')">Enter the Sanctuary</button>
+        <div style="display:flex; flex-direction:column; gap:1rem; align-items:center; margin-top:2rem;">
+            <button class="cta-btn" onclick="window.switchTo('science')" style="width:280px;">Enter the Sanctuary</button>
+            <button class="cta-btn" onclick="window.render()" style="width:280px; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border); box-shadow:none;">Resume My Expansion</button>
         </div>
     </div>`;
 }
@@ -755,10 +756,13 @@ function getRitualView() {
 }
 
 window.toggleRitual = (el) => {
-    const r = el.getAttribute('data-ritual');
+    const r = el.getAttribute('data-ritual').trim();
     if (!State.userData.selectedRituals) State.userData.selectedRituals = [];
     const list = State.userData.selectedRituals;
-    const idx = list.indexOf(r);
+    
+    // Use a more robust check to find the index
+    const idx = list.findIndex(item => item.trim() === r);
+    
     if (idx > -1) {
         State.userData.selectedRituals.splice(idx, 1);
     } else {
@@ -826,7 +830,7 @@ function getAlchemyView() {
 function getManifestoView() {
     return `<div class="glass-card fade-in">
         <h1 style="margin-bottom:1rem;">Ultimate Life Manifesto</h1>
-        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v19.0.4 Adaptive Flow</p>
+        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v19.0.5 Persistent Flow</p>
         ${renderFinalJewel()}
         <div style="margin-top:4rem; padding:2rem; border-top:1px solid var(--glass-border); text-align:center;">
             <p class="story-text" style="font-style:italic; opacity:0.8;">"This is not who I am becoming; this is who I am."</p>
