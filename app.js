@@ -296,6 +296,9 @@ window.render = () => {
 const DailyRitualLibrary = {
     morning: [
         "Waking up naturally with no alarm",
+        "Waking up at 10 AM, feeling fully rested",
+        "A slow, late morning start",
+        "Brunch in my sunny kitchen",
         "Walking by the ocean in the early light",
         "Drinking coffee on my balcony",
         "Looking out over the water",
@@ -330,11 +333,14 @@ const DailyRitualLibrary = {
     ],
     evening: [
         "Dinner at home with a private chef",
+        "Staying up late in the quiet of the night",
+        "Working late when the world is silent",
         "Looking at the sunset",
         "Walking on the beach at night",
         "A quiet evening by the fire",
         "Deep connection with my family",
         "Watching the stars",
+        "Midnight walks under the stars",
         "A warm bath to end the day",
         "Reading before bed",
         "Total peace in my home",
@@ -705,7 +711,7 @@ function getWelcomeView() {
     
     return `<div class="hero">
         <h1>Identity Alchemy</h1>
-        <p class="subtitle" style="color:var(--accent);">v19.2.0 Living Story</p>
+        <p class="subtitle" style="color:var(--accent);">v19.2.1 Circadian Sync</p>
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
         <div style="display:flex; flex-direction:column; gap:1rem; align-items:center; margin-top:2rem;">
             <button class="cta-btn" onclick="window.switchTo('science')" style="width:280px;">Enter the Sanctuary</button>
@@ -883,7 +889,7 @@ function getAlchemyView() {
 function getManifestoView() {
     return `<div class="glass-card fade-in">
         <h1 style="margin-bottom:1rem;">Ultimate Life Manifesto</h1>
-        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v19.2.0 Living Story</p>
+        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v19.2.1 Circadian Sync</p>
         ${renderFinalJewel()}
         <div style="margin-top:4rem; padding:2rem; border-top:1px solid var(--glass-border); text-align:center;">
             <p class="story-text" style="font-style:italic; opacity:0.8;">"This is not who I am becoming; this is who I am."</p>
