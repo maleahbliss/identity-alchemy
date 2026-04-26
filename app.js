@@ -447,70 +447,71 @@ function generateUniversalVision() {
 
     let story = "";
 
-    // 1. OPENING - The Awakening of the Avatar
+    // 1. OPENING - The Awakening
     const isLateRiser = rituals.some(r => r.includes("10 AM") || r.includes("late morning") || r.includes("brunch"));
     if (isLateRiser) {
-        story = `The mid-morning sun fills your home with a warm, steady light. As you wake up naturally at 10 AM, you feel completely rested and ready. You are the ${avatar}, awakening in your ${sanctuary}, where time is your greatest luxury. `;
+        story = `The mid-morning sun fills the room as sleep dissolves into a feeling of total restoration. This is the awakening of the ${avatar}, where time is a luxury that honors your presence. `;
     } else {
-        story = `As the first light of morning enters the room, you wake up with a clear mind. Everything is quiet, and you feel the deep calm of the ${avatar} beginning a new day in your ${sanctuary}. `;
+        story = `As the first light of early morning enters the room, a clear mind greets the day. The sanctuary of your home remains silent, reflecting the deep calm of the ${avatar} at rest. `;
     }
     
-    story += "Why is my connection so infinite, so effortless, and so direct? You feel this truth in every breath as you step into your day. ";
+    story += "Why is my connection so infinite, so effortless, and so direct? The question arises naturally as the first deep breaths of the day bring a sense of absolute certainty. ";
 
-    // 2. MORNING - The Foundation of Self
+    // 2. MORNING - The Foundation
     const morningNature = rl.filter(r => r.includes("ocean") || r.includes("water") || r.includes("balcony") || r.includes("air") || r.includes("trees") || r.includes("sunrise") || r.includes("mountain") || r.includes("waves"));
     const morningSpirit = rl.filter(r => r.includes("meditation") || r.includes("journaling") || r.includes("book") || r.includes("bed"));
     
-    story += "\n\nThese first few hours belong entirely to you, a time to anchor your new identity. ";
+    story += "\n\nThese first few hours are a time to anchor the architecture of your new self. ";
     
     if (morningNature.length > 0) {
         let natureDesc = [];
         if (rl.includes("walking by the ocean")) natureDesc.push("the cool ocean breeze");
-        if (rl.includes("coffee on your balcony") || rl.includes("looking out over the water")) natureDesc.push("the endless horizon from your balcony");
+        if (rl.includes("coffee on your balcony") || rl.includes("looking out over the water")) natureDesc.push("the endless horizon from the balcony");
         if (rl.includes("trees") || rl.includes("mountain")) natureDesc.push("the quiet strength of the trees");
-        story += "You take in " + natureDesc.join(" and ") + ", knowing that abundance flows to you as naturally as the tides. ";
+        story += "The world outside provides a beautiful backdrop, where " + natureDesc.join(" and ") + " remind you that abundance flows as naturally as the tides. ";
     }
 
     if (morningSpirit.length > 0) {
-        story += "In the quiet of your home, you focus on your internal world. ";
-        if (rl.includes("meditation")) story += "A simple meditation helps you find an unshakeable center. ";
-        if (rl.includes("journaling")) story += "As you write down your thoughts, you see the blueprint of your future becoming real. ";
-        story += "How can it get even better than this? This question echoes through your mind as you prepare for the impact you are about to make. ";
+        story += "In the quiet of the morning, internal focus becomes the priority. ";
+        if (rl.includes("meditation")) story += "A simple meditation provides an unshakeable center, ";
+        if (rl.includes("journaling")) story += "while writing down your thoughts maps the trajectory of your desired reality. ";
+        story = story.trim().replace(/,$/, ".") + " How can it get even better than this? This reflection centers your focus as the day begins to unfold. ";
     }
 
-    // 3. DAY - The Impact of Purpose
-    story += "\n\nAs the day moves forward, you step into your role as a leader. Why am I so good at making, keeping, and multiplying money? Abundance is not just something you seek; it is part of who you are. ";
+    // 3. DAY - The Impact
+    story += "\n\nAs the day moves forward, your role as a leader becomes clear. Why am I so good at making, keeping, and multiplying money? Abundance is not just a goal; it is the natural state of your presence. ";
     
     const dayCreative = rl.filter(r => r.includes("love") || r.includes("meaningful") || r.includes("ideas") || r.includes("creative"));
     const dayAuthority = rl.filter(r => r.includes("conversations") || r.includes("leading") || r.includes("team") || r.includes("help others"));
 
     if (dayCreative.length > 0) {
-        story += "You spend your time on work you truly love. Your ideas come to life with ease, creating radical value for everyone they touch. ";
+        story += "Work you truly love becomes an expression of pure creativity, where ideas come to life with weightless momentum. ";
     }
     if (dayAuthority.length > 0) {
-        story += "You lead your team with a natural authority, having the honest conversations that create a lasting legacy. ";
+        story += "Natural authority guides every interaction, and honest conversations create the foundation of a lasting legacy. ";
     }
     
-    story += "Why does abundance flow so naturally and effortlessly to me? You see the proof of this in your clear decisions and the strategic command you hold over your time and freedom. ";
+    story += "Why does abundance flow so naturally and effortlessly to me? The answer is found in the strategic command you hold over your time and the freedom that follows your every decision. ";
 
-    // 4. EVENING - The Return to Sanctuary
-    story += "\n\nWhen the light begins to fade, you return to the absolute comfort of your home. Why do I always feel so incredibly good all the time? This feeling of gratitude is your constant companion. ";
+    // 4. EVENING - The Sanctuary
+    story += "\n\nWhen the light begins to fade, the comfort of your domestic fortress calls you home. Why do I always feel so incredibly good all the time? This sense of gratitude is the soundtrack to your evening. ";
     
     const eveningAbundance = rl.filter(r => r.includes("dinner") || r.includes("wine") || r.includes("friends") || r.includes("chef"));
     const eveningStillness = rl.filter(r => r.includes("sunset") || r.includes("stars") || r.includes("midnight") || r.includes("beach at night") || r.includes("fire"));
 
     if (eveningAbundance.length > 0) {
-        story += "You enjoy good food and wine, celebrating the life you have built with people you trust. ";
+        story += "Success is celebrated with good food and wine in the company of those you trust. ";
     }
     if (eveningStillness.length > 0) {
-        story += "Walking under the stars at midnight, you find a deep peace in the world around you. The sound of the ocean reminds you that you are lucky, supported, and rewarded beyond measure. ";
+        story += "Walking under the stars at midnight, the silence of the universe mirrors your own creative fulfillment. The rhythmic tide of the ocean at night anchors your unmasked visibility. ";
     }
     
-    story += "As you surrender to a restorative sleep, you carry one final truth with you: I am safe. I am loved. I am the creator of my reality. ";
+    story += "As the day ends, a restorative sleep provides the final peace, knowing that you are lucky, supported, and rewarded beyond measure. I am safe. I am loved. I am the creator of my reality. ";
 
-    story += "\n\nThis is not just a meditation; it is your life. You know what you are creating, and you know that it is already done. So it is.";
+    story += "\n\nThis is not just a story; it is your life. You know what you are creating, and you know that it is already done. So it is.";
     return story;
 }
+
 
 
 
