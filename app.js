@@ -440,82 +440,110 @@ function generateUniversalVision() {
     if (rituals.length === 0) return "As you breathe in the silence, the day begins to take shape... (Select your Daily Rituals to weave your story)";
 
     const isLateRiser = rituals.some(r => r.includes("10 AM") || r.includes("late morning") || r.includes("brunch"));
-    const isNightOwl = rituals.some(r => r.includes("staying up late") || r.includes("working late") || r.includes("midnight"));
-
-    let story = "";
+    const rl = rituals.map(r => r.toLowerCase());
     
-    // Opening
+    let story = "";
+
+    // 1. OPENING & ATMOSPHERE
     if (isLateRiser) {
         story = "With the soft, golden glow of the mid-morning sun filling your home, you awaken naturally, feeling the deep restoration of a body fully rested. The silence of your sanctuary honors your space, a profound stillness that reflects your internal peace. ";
     } else {
         story = "As the first gentle light of the morning touches the room, you awaken with absolute clarity, your mind already in a state of quiet mastery. The sanctuary of your home remains silent, a testament to the peace you have cultivated. ";
     }
 
-    // Morning Rituals
-    const morning = rituals.filter(r => DailyRitualLibrary.morning.includes(r));
-    if (morning.length > 0) {
+    // 2. MORNING SYNTHESIS
+    const morningNature = rl.filter(r => r.includes("ocean") || r.includes("water") || r.includes("balcony") || r.includes("air") || r.includes("trees") || r.includes("sunrise") || r.includes("mountain") || r.includes("waves"));
+    const morningSpirit = rl.filter(r => r.includes("meditation") || r.includes("journaling") || r.includes("book") || r.includes("bed"));
+    const morningVitality = rl.filter(r => r.includes("shower") || r.includes("breakfast") || r.includes("10 am") || r.includes("brunch") || r.includes("coffee"));
+
+    if (morningNature.length > 0 || morningSpirit.length > 0 || morningVitality.length > 0) {
         story += "\n\nThese first hours move with a grace that is entirely your own. ";
-        morning.forEach(r => {
-            const rl = r.toLowerCase();
-            if (rl.includes("ocean")) story += "A slow walk by the ocean brings the cool, salt-misted air against your skin, grounding your presence in the rhythm of the waves. ";
-            else if (rl.includes("balcony")) story += "Stepping onto your balcony, the warmth of your coffee anchors you while your eyes find the infinite horizon. ";
-            else if (rl.includes("meditation")) story += "Surrendering to a simple, quiet meditation, you find the unshakeable stillness that centers your entire being. ";
-            else if (rl.includes("making your bed")) story += "Smoothing the crisp linens of your bed, you practice a simple discipline that prepares you for a day of absolute spirit. ";
-            else if (rl.includes("reading a book")) story += "In the deep quiet, the wisdom of a book echoes your own internal expansion. ";
-            else if (rl.includes("brunch")) story += "The aroma of a slow brunch in your sunny kitchen signals a day that moves at the speed of your own desire. ";
-            else if (rl.includes("10 am")) story += "Waking at 10 AM, you feel the luxury of time, a physical masterpiece fully restored. ";
-            else if (rl.includes("waves")) story += "Outside your window, the rhythmic sound of waves becomes the soundtrack to your morning clarity. ";
-            else if (rl.includes("fresh air")) story += "Breathed in deeply, the fresh morning air fills you with a sense of total freedom and renewed vitality. ";
-            else if (rl.includes("shower")) story += "A long, hot shower washes away the last traces of sleep, leaving you focused, energized, and ready. ";
-            else if (rl.includes("journaling")) story += "Your thoughts flow onto the page with profound ease, journaling the trajectory of your expansion. ";
-            else if (rl.includes("breakfast")) story += "Nourishment comes from a healthy breakfast at home, preparing you for the radical impact you create. ";
-            else if (rl.includes("sunrise")) story += "Watching the sunrise, you witness the birth of a new world, reflecting the light within you. ";
-            else if (rl.includes("trees")) story += "A peaceful walk through the trees connects you to the ancient, grounded wisdom of the earth. ";
-            else story += `Moving through the morning with ${rl}, you find clarity and grace in the simple perfection of your routine. `;
-        });
+        
+        if (morningNature.length > 0) {
+            story += "The world outside your window provides a rhythmic soundtrack to your expansion; ";
+            if (rl.includes("walking by the ocean")) story += "the cool, salt-misted air of the beach ";
+            if (rl.includes("coffee on your balcony") || rl.includes("looking out over the water")) story += "blends with the infinite horizon visible from your balcony, ";
+            if (rl.includes("sunrise")) story += "as you witness the birth of a new world in the colors of the dawn, ";
+            if (rl.includes("trees") || rl.includes("mountain")) story += "connecting you to the ancient, grounded wisdom of the earth. ";
+            story = story.trim().replace(/,$/, ".") + " ";
+        }
+
+        if (morningSpirit.length > 0) {
+            story += "In the deep quiet of your home, you practice the disciplines of a master. ";
+            if (rl.includes("meditation")) story += "Surrendering to a simple meditation, you find the unshakeable stillness that centers your being. ";
+            if (rl.includes("journaling")) story += "Your thoughts flow onto the page with profound ease, mapping the trajectory of your desired reality. ";
+            if (rl.includes("reading a book")) story += "The wisdom of your study echoes your own internal clarity, ";
+            if (rl.includes("making your bed")) story += "while the simple act of making your bed anchors you in a state of absolute spirit. ";
+            story = story.trim().replace(/,$/, ".") + " ";
+        }
+
+        if (morningVitality.length > 0) {
+            story += "Restoration and vitality are your natural states. ";
+            if (rl.includes("waking at 10 am") || rl.includes("brunch")) story += "The luxury of a slow morning brunch signals a day that moves at the speed of your own desire. ";
+            if (rl.includes("shower")) story += "A long, hot shower washes away the last traces of sleep, leaving you energized and focused. ";
+            if (rl.includes("coffee")) story += "The warmth of your coffee anchors your presence, a simple ritual of prime health. ";
+            story = story.trim().replace(/,$/, ".") + " ";
+        }
     }
 
-    // Work / Day Rituals
-    const day = rituals.filter(r => DailyRitualLibrary.day.includes(r));
-    if (day.length > 0) {
+    // 3. DAY SYNTHESIS
+    const dayCreative = rl.filter(r => r.includes("love") || r.includes("meaningful") || r.includes("ideas") || r.includes("creative"));
+    const dayAuthority = rl.filter(r => r.includes("conversations") || r.includes("leading") || r.includes("team") || r.includes("help others"));
+    const dayStrategic = rl.filter(r => r.includes("problems") || r.includes("focused") || r.includes("decisions") || r.includes("time perfectly") || r.includes("freedom"));
+
+    if (dayCreative.length > 0 || dayAuthority.length > 0 || dayStrategic.length > 0) {
         story += "\n\nAs the day unfolds, your presence becomes a beacon of authentic light. ";
-        day.forEach(r => {
-            const rl = r.toLowerCase();
-            if (rl.includes("love")) story += "Time dissolves while you work on the things you love, creativity flowing from you with weightless momentum. ";
-            else if (rl.includes("conversations")) story += "In every deep, honest conversation, your authority creates radical value for everyone you meet. ";
-            else if (rl.includes("leading")) story += "Leading your team with ease, your natural presence guides them toward a collective legacy impact. ";
-            else if (rl.includes("nature")) story += "Restoration finds you in the heart of nature, the world reflecting your own structural peace. ";
-            else if (rl.includes("problems")) story += "Strategic command comes naturally as you solve problems with the precision of direct intuition. ";
-            else if (rl.includes("focused")) story += "A sense of unshakeable concentration follows you through every task and interaction. ";
-            else if (rl.includes("trust")) story += "Collaborating with those you trust, you build the foundations of your future with absolute certainty. ";
-            else if (rl.includes("decisions")) story += "Every clear, confident decision you make pulls your vision into the present reality. ";
-            else if (rl.includes("freedom")) story += "Every moment feels like an expression of your total, time-rich autonomy. ";
-            else story += `Navigating the day with ${rl}, your presence remains an unmasked expression of truth. `;
-        });
+        
+        if (dayCreative.length > 0) {
+            story += "Time dissolves while you work on the things you love. ";
+            story += "Your creativity flows with weightless momentum, seeing your ideas come to life as radical value for the world. ";
+        }
+
+        if (dayAuthority.length > 0) {
+            story += "In every interaction, you lead with ease. ";
+            story += "Your authentic authority and natural presence guide your team, creating legacy impact through every deep, honest conversation. ";
+        }
+
+        if (dayStrategic.length > 0) {
+            story += "Strategic command comes naturally. ";
+            story += "You solve problems with the precision of direct intuition, making clear, confident decisions that pull the future into the now. ";
+        }
     }
 
-    // Evening Rituals
-    const evening = rituals.filter(r => DailyRitualLibrary.evening.includes(r));
-    if (evening.length > 0) {
+    // 4. EVENING SYNTHESIS
+    const eveningAbundance = rl.filter(r => r.includes("dinner") || r.includes("wine") || r.includes("friends") || r.includes("chef"));
+    const eveningStillness = rl.filter(r => r.includes("sunset") || r.includes("stars") || r.includes("midnight") || r.includes("beach at night") || r.includes("fire"));
+    const eveningSanctuary = rl.filter(r => r.includes("peace in your home") || r.includes("family") || r.includes("sleep") || r.includes("bath") || r.includes("grateful") || r.includes("beach home") || r.includes("staying up late") || r.includes("working late"));
+
+    if (eveningAbundance.length > 0 || eveningStillness.length > 0 || eveningSanctuary.length > 0) {
         story += "\n\nWhen the light begins to fade, the absolute comfort of your sanctuary calls you home. ";
-        evening.forEach(r => {
-            const rl = r.toLowerCase();
-            if (rl.includes("working late") || rl.includes("staying up late")) story += `In the deep, silent quiet of the night, you find your most profound focus, ${rl}. `;
-            else if (rl.includes("chef")) story += "A dinner at home, prepared by your private chef, is a celebration of the abundance you have claimed. ";
-            else if (rl.includes("sunset")) story += "Standing quietly as the sun sets, a deep gratitude for the life you lead fills your heart. ";
-            else if (rl.includes("family")) story += "The anchor of your domestic fortress is the deep, resonant connection with your family. ";
-            else if (rl.includes("midnight")) story += "Walking under the stars at midnight, the stillness of the world reflects your own creative fulfillment. ";
-            else if (rl.includes("sleep")) story += "Surrendering to a long, restorative sleep, you know that you are safe, supported, and rewarded. ";
-            else if (rl.includes("peace in your home")) story += "The total peace of your home stands as a testament to the legacy you have built. ";
-            else if (rl.includes("bath")) story += "A warm bath at the end of the day dissolves any lingering static, leaving you in a state of absolute grace. ";
-            else if (rl.includes("beach home")) story += "Living in your beach home, the rhythm of the tides reflects your own prosperous momentum. ";
-            else story += `The day ends with ${rl}, leaving you in a state of professional peace and creative resonance. `;
-        });
+        
+        if (eveningAbundance.length > 0) {
+            story += "Abundance is celebrated in the company of those you trust. ";
+            story += "Whether sharing fine wine with friends or a meal prepared by your private chef, you honor the prosperity you have claimed. ";
+        }
+
+        if (eveningStillness.length > 0) {
+            story += "The nocturnal world reflects your internal stillness. ";
+            if (rl.includes("sunset")) story += "Standing quietly as the sun sets, a deep gratitude fills your heart. ";
+            if (rl.includes("midnight") || rl.includes("stars")) story += "Walking under the stars at midnight, the silence of the universe mirrors your own creative fulfillment. ";
+            if (rl.includes("beach at night")) story += "The rhythmic tide of the ocean at night anchors your unmasked visibility. ";
+            story = story.trim().replace(/,$/, ".") + " ";
+        }
+
+        if (eveningSanctuary.length > 0) {
+            story += "You return to the unshakeable center of your domestic fortress. ";
+            if (rl.includes("family")) story += "The deep, resonant connection with your family is your anchor. ";
+            if (rl.includes("staying up late") || rl.includes("working late")) story += "In the silent hours of the night, you find your most profound focus and professional peace. ";
+            if (rl.includes("sleep") || rl.includes("bath")) story += "Surrendering to a restorative sleep, you know that you are safe, supported, and rewarded. ";
+            story = story.trim().replace(/,$/, ".") + " ";
+        }
     }
 
     story += "\n\nThis is not just a day; it is your reality. You know what you are creating, you know what you want, and you know how to make it happen. So it is.";
     return story;
 }
+
 
 
 function synthesizeNarrative(p) {
