@@ -298,34 +298,34 @@ const DailyRitualLibrary = {
         "Waking up naturally with no alarm",
         "Waking up at 10 AM, feeling fully rested",
         "A slow, late morning start",
-        "Brunch in my sunny kitchen",
+        "Brunch in your sunny kitchen",
         "Walking by the ocean in the early light",
-        "Drinking coffee on my balcony",
+        "Drinking coffee on your balcony",
         "Looking out over the water",
-        "Coffee in my mountain home",
+        "Coffee in your mountain home",
         "A simple, quiet meditation",
-        "Making my bed",
+        "Making your bed",
         "Reading a book in the quiet",
-        "The sound of waves outside my window",
+        "The sound of waves outside your window",
         "Stepping out into the fresh morning air",
         "A long, hot shower",
-        "Journaling my thoughts for the day",
+        "Journaling your thoughts for the day",
         "A healthy breakfast at home",
         "Watching the sunrise",
         "A peaceful walk through the trees"
     ],
     day: [
-        "Working on things I love",
+        "Working on things you love",
         "Having deep, honest conversations",
         "Creating something meaningful",
-        "A quiet lunch by myself",
-        "Leading my team with ease",
+        "A quiet lunch by yourself",
+        "Leading your team with ease",
         "Solving problems quickly",
         "Feeling productive and focused",
-        "Collaborating with people I trust",
+        "Collaborating with people you trust",
         "Taking a walk in the sun",
-        "Managing my time perfectly",
-        "Seeing my ideas come to life",
+        "Managing your time perfectly",
+        "Seeing your ideas come to life",
         "Helping others grow",
         "Spending time in nature",
         "Making clear, confident decisions",
@@ -338,17 +338,17 @@ const DailyRitualLibrary = {
         "Looking at the sunset",
         "Walking on the beach at night",
         "A quiet evening by the fire",
-        "Deep connection with my family",
+        "Deep connection with your family",
         "Watching the stars",
         "Midnight walks under the stars",
         "A warm bath to end the day",
         "Reading before bed",
-        "Total peace in my home",
+        "Total peace in your home",
         "Planning a beautiful tomorrow",
-        "Living in my beach home",
+        "Living in your beach home",
         "Good food and good wine with friends",
         "A long, restorative sleep",
-        "Feeling grateful for my life",
+        "Feeling grateful for your life",
         "Absolute stillness as the day ends"
     ]
 };
@@ -458,9 +458,10 @@ function generateUniversalVision() {
             if (r.toLowerCase().includes("walking")) story += `You find yourself ${r.toLowerCase().replace("walking", "walking")}, the air cool and fresh against your skin. `;
             else if (r.toLowerCase().includes("coffee")) story += `You sit in peace, ${r.toLowerCase().replace("drinking", "drinking")}, the warmth of the cup in your hands as you look out at the horizon. `;
             else if (r.toLowerCase().includes("meditation")) story += `You sink into ${r.toLowerCase()}, finding the unshakeable stillness that centers your entire being. `;
-            else if (r.toLowerCase().includes("making my bed")) story += `You take a moment to make your bed, smoothing the crisp linens as you prepare for a day of absolute spirit. `;
+            else if (r.toLowerCase().includes("making your bed")) story += `You take a moment to make your bed, smoothing the crisp linens as you prepare for a day of absolute spirit. `;
             else if (r.toLowerCase().includes("reading")) story += `You lose yourself in ${r.toLowerCase()}, the wisdom of the words echoing in the morning quiet. `;
             else if (r.toLowerCase().includes("brunch")) story += `You enjoy a slow ${r.toLowerCase()}, the sunlight filling your kitchen with a gentle warmth. `;
+            else story += `You embrace ${r.toLowerCase()}, feeling the simple perfection of the morning. `;
         });
     }
 
@@ -471,7 +472,7 @@ function generateUniversalVision() {
         day.forEach(r => {
             if (r.toLowerCase().includes("working")) story += `You spend your hours ${r.toLowerCase()}, where your creativity flows without resistance. `;
             else if (r.toLowerCase().includes("conversations")) story += `You engage in ${r.toLowerCase()}, your presence creating radical value for everyone you meet. `;
-            else if (r.toLowerCase().includes("leading")) story += `You lead with ease, your natural presence guiding those around me toward legacy impact. `;
+            else if (r.toLowerCase().includes("leading")) story += `You lead with ease, your natural presence guiding those around you toward legacy impact. `;
             else if (r.toLowerCase().includes("nature")) story += `You find restoration in ${r.toLowerCase()}, the natural world reflecting your own internal peace. `;
             else story += `You move through the day ${r.toLowerCase()}, every action an expression of your strategic command. `;
         });
@@ -716,15 +717,14 @@ const Views = {
 
 function getWelcomeView() {
     const hasProgress = State.userData.pillars.some(p => p.venting || p.selectedGems.length > 0);
-    const resumeAction = (State.view === 'welcome' && hasProgress) ? "window.switchTo('discovery')" : "window.switchTo(State.view)";
     
     return `<div class="hero">
         <h1>Identity Alchemy</h1>
-        <p class="subtitle" style="color:var(--accent);">v19.2.2 Guided Path</p>
+        <p class="subtitle" style="color:var(--accent);">v19.2.3 Perfect Perspective</p>
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
         <div style="display:flex; flex-direction:column; gap:1rem; align-items:center; margin-top:2rem;">
             <button class="cta-btn" onclick="window.switchTo('science')" style="width:280px;">Enter the Sanctuary</button>
-            <button class="cta-btn" onclick="window.resumeJourney()" style="width:280px; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border); box-shadow:none;">Resume My Expansion</button>
+            <button class="cta-btn" onclick="window.resumeJourney()" style="width:280px; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--glass-border); box-shadow:none;">Resume Your Expansion</button>
         </div>
     </div>`;
 }
@@ -898,7 +898,7 @@ function getAlchemyView() {
 function getManifestoView() {
     return `<div class="glass-card fade-in">
         <h1 style="margin-bottom:1rem;">Ultimate Life Manifesto</h1>
-        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v19.2.2 Guided Path</p>
+        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v19.2.3 Perfect Perspective</p>
         ${renderFinalJewel()}
         <div style="margin-top:4rem; padding:2rem; border-top:1px solid var(--glass-border); text-align:center;">
             <p class="story-text" style="font-style:italic; opacity:0.8;">"This is not who I am becoming; this is who I am."</p>
