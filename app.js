@@ -437,53 +437,62 @@ const MetaphorFactory = {
 
 function generateUniversalVision() {
     const rituals = State.userData.selectedRituals || [];
-    if (rituals.length === 0) return `I begin my day in total clarity... (Select your Daily Rituals to weave your story)`;
+    if (rituals.length === 0) return `You begin your day in total clarity... (Select your Daily Rituals to weave your story)`;
 
-    let story = `I awaken naturally, the silence of my home a sanctuary that honors my presence. `;
+    let story = "";
+    
+    // Check for late riser
+    const isLateRiser = rituals.some(r => r.includes("10 AM") || r.includes("late morning"));
+    
+    if (isLateRiser) {
+        story = `As the mid-morning sun begins to fill your home, you awaken naturally, feeling fully rested. The silence of your home is a sanctuary that honors your presence. `;
+    } else {
+        story = `As the early light touches the room, you awaken naturally, your mind already clear. The silence of your home is a sanctuary that honors your presence. `;
+    }
 
     // Morning
     const morning = rituals.filter(r => DailyRitualLibrary.morning.includes(r));
     if (morning.length > 0) {
-        story += `As the early light touches the room, I move with a sense of quiet grace. `;
-        morning.forEach((r, i) => {
-            if (r.toLowerCase().includes("waking up")) story += `I feel the luxury of time as I wake without an alarm, my mind already clear. `;
-            else if (r.toLowerCase().includes("walking")) story += `I find myself ${r.toLowerCase().replace("walking", "walking")}, the air cool and fresh against my skin. `;
-            else if (r.toLowerCase().includes("coffee")) story += `I sit in peace, ${r.toLowerCase().replace("drinking", "drinking")}, the warmth of the cup in my hands as I look out at the horizon. `;
-            else if (r.toLowerCase().includes("meditation")) story += `I sink into ${r.toLowerCase()}, finding the unshakeable stillness that centers my entire being. `;
-            else if (r.toLowerCase().includes("making my bed")) story += `I take a moment to make my bed, smoothing the crisp linens as I prepare for a day of absolute spirit. `;
-            else if (r.toLowerCase().includes("reading")) story += `I lose myself in ${r.toLowerCase()}, the wisdom of the words echoing in the morning quiet. `;
-            else if (r.toLowerCase().includes("sunrise")) story += `I stand in silence, ${r.toLowerCase().replace("watching", "watching")}, feeling the energy of a new world dawning. `;
-            else story += `I take a moment for ${r.toLowerCase()}, feeling the simple perfection of the morning. `;
+        story += `You move through these first hours with a sense of quiet grace. `;
+        morning.forEach(r => {
+            if (r.toLowerCase().includes("walking")) story += `You find yourself ${r.toLowerCase().replace("walking", "walking")}, the air cool and fresh against your skin. `;
+            else if (r.toLowerCase().includes("coffee")) story += `You sit in peace, ${r.toLowerCase().replace("drinking", "drinking")}, the warmth of the cup in your hands as you look out at the horizon. `;
+            else if (r.toLowerCase().includes("meditation")) story += `You sink into ${r.toLowerCase()}, finding the unshakeable stillness that centers your entire being. `;
+            else if (r.toLowerCase().includes("making my bed")) story += `You take a moment to make your bed, smoothing the crisp linens as you prepare for a day of absolute spirit. `;
+            else if (r.toLowerCase().includes("reading")) story += `You lose yourself in ${r.toLowerCase()}, the wisdom of the words echoing in the morning quiet. `;
+            else if (r.toLowerCase().includes("brunch")) story += `You enjoy a slow ${r.toLowerCase()}, the sunlight filling your kitchen with a gentle warmth. `;
         });
     }
 
     // Day
     const day = rituals.filter(r => DailyRitualLibrary.day.includes(r));
     if (day.length > 0) {
-        story += `\n\nAs the day unfolds, I step into my power with effortless authority. `;
+        story += `\n\nAs the day unfolds, you step into your power with effortless authority. `;
         day.forEach(r => {
-            if (r.toLowerCase().includes("working")) story += `I spend my hours ${r.toLowerCase()}, where my creativity flows without resistance. `;
-            else if (r.toLowerCase().includes("conversations")) story += `I engage in ${r.toLowerCase()}, my presence creating radical value for everyone I meet. `;
-            else if (r.toLowerCase().includes("leading")) story += `I lead with ease, my natural presence guiding those around me toward legacy impact. `;
-            else if (r.toLowerCase().includes("nature")) story += `I find restoration in ${r.toLowerCase()}, the natural world reflecting my own internal peace. `;
-            else story += `I move through the day ${r.toLowerCase()}, every action an expression of my strategic command. `;
+            if (r.toLowerCase().includes("working")) story += `You spend your hours ${r.toLowerCase()}, where your creativity flows without resistance. `;
+            else if (r.toLowerCase().includes("conversations")) story += `You engage in ${r.toLowerCase()}, your presence creating radical value for everyone you meet. `;
+            else if (r.toLowerCase().includes("leading")) story += `You lead with ease, your natural presence guiding those around me toward legacy impact. `;
+            else if (r.toLowerCase().includes("nature")) story += `You find restoration in ${r.toLowerCase()}, the natural world reflecting your own internal peace. `;
+            else story += `You move through the day ${r.toLowerCase()}, every action an expression of your strategic command. `;
         });
     }
 
     // Evening
     const evening = rituals.filter(r => DailyRitualLibrary.evening.includes(r));
     if (evening.length > 0) {
-        story += `\n\nWhen the light begins to fade, I return to the absolute comfort of my home. `;
+        story += `\n\nWhen the light begins to fade, you return to the absolute comfort of your home. `;
         evening.forEach(r => {
-            if (r.toLowerCase().includes("dinner")) story += `I enjoy ${r.toLowerCase()}, the flavors as rich and vibrant as the life I have created. `;
-            else if (r.toLowerCase().includes("sunset")) story += `I stand quietly, ${r.toLowerCase().replace("looking", "looking")}, grateful for the abundance that flows so naturally to me. `;
-            else if (r.toLowerCase().includes("family")) story += `I find deep connection in ${r.toLowerCase()}, the love in my home a testament to the legacy I am building. `;
-            else if (r.toLowerCase().includes("sleep")) story += `I surrender to ${r.toLowerCase()}, knowing that I am safe, supported, and rewarded beyond measure. `;
-            else story += `I end my day ${r.toLowerCase()}, the stillness of the night a reflection of my creative fulfillment. `;
+            if (r.toLowerCase().includes("working late") || r.toLowerCase().includes("staying up late")) story += `In the deep quiet of the night, you find your most profound focus, ${r.toLowerCase()}. `;
+            else if (r.toLowerCase().includes("dinner")) story += `You enjoy ${r.toLowerCase()}, the flavors as rich and vibrant as the life you have created. `;
+            else if (r.toLowerCase().includes("sunset")) story += `You stand quietly, ${r.toLowerCase().replace("looking", "looking")}, grateful for the abundance that flows so naturally to you. `;
+            else if (r.toLowerCase().includes("family")) story += `You find deep connection in ${r.toLowerCase()}, the love in your home a testament to the legacy you are building. `;
+            else if (r.toLowerCase().includes("midnight")) story += `You walk under the stars, the night air cooling your skin as you enjoy ${r.toLowerCase()}. `;
+            else if (r.toLowerCase().includes("sleep")) story += `You surrender to ${r.toLowerCase()}, knowing that you are safe, supported, and rewarded beyond measure. `;
+            else story += `You end your day ${r.toLowerCase()}, the stillness of the night a reflection of your creative fulfillment. `;
         });
     }
 
-    story += `\n\nThis is not just a day; it is my reality. I know what I am creating, I know what I want, and I know how to make it happen. So it is.`;
+    story += `\n\nThis is not just a day; it is your reality. You know what you are creating, you know what you want, and you know how to make it happen. So it is.`;
     return story;
 }
 
@@ -711,7 +720,7 @@ function getWelcomeView() {
     
     return `<div class="hero">
         <h1>Identity Alchemy</h1>
-        <p class="subtitle" style="color:var(--accent);">v19.2.1 Circadian Sync</p>
+        <p class="subtitle" style="color:var(--accent);">v19.2.2 Guided Path</p>
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
         <div style="display:flex; flex-direction:column; gap:1rem; align-items:center; margin-top:2rem;">
             <button class="cta-btn" onclick="window.switchTo('science')" style="width:280px;">Enter the Sanctuary</button>
@@ -889,7 +898,7 @@ function getAlchemyView() {
 function getManifestoView() {
     return `<div class="glass-card fade-in">
         <h1 style="margin-bottom:1rem;">Ultimate Life Manifesto</h1>
-        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v19.2.1 Circadian Sync</p>
+        <p class="subtitle" style="color:var(--accent); margin-bottom:3rem;">v19.2.2 Guided Path</p>
         ${renderFinalJewel()}
         <div style="margin-top:4rem; padding:2rem; border-top:1px solid var(--glass-border); text-align:center;">
             <p class="story-text" style="font-style:italic; opacity:0.8;">"This is not who I am becoming; this is who I am."</p>
