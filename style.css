@@ -73,6 +73,20 @@ h2 { font-size: 2.4rem; line-height: 1.2; }
 }
 .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 15px 30px -5px rgba(139, 92, 246, 0.6); }
 
+.secondary-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    border: 1px solid var(--glass-border);
+    padding: 1.25rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+}
+.secondary-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+
 /* Science / Story Sections */
 .story-text { font-size: 1.2rem; color: var(--text-main); margin-bottom: 2rem; font-weight: 300; }
 .story-text b { color: var(--accent); font-weight: 600; }

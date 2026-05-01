@@ -1,1 +1,8 @@
-demoData.js
+node_modules/
+package-lock.json
+package.json
+temp_v18_9.js
+temp_v18_9_utf8.js
+temp_v18_8.js
+temp_v18_8_utf8.js
+alchemy_v49.js

@@ -252,7 +252,8 @@ const AlchemicalDeclarations = {
     }
 };
 
-const State = {
+const STORAGE_KEY = 'identity_alchemy_data';
+const defaultState = {
     view: 'welcome',
     pillarIndex: 0,
     alchemyPhase: 'mirror',
@@ -267,9 +268,13 @@ const State = {
     }
 };
 
-function saveData() { 
-    // Manual state save could be here, but current protocol is Private Sanctuary (ephemeral).
-}
+let loadedState = null;
+try { loadedState = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e) {}
+const State = loadedState || defaultState;
+
+window.saveData = function() { 
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(State));
+};
 
 // --- Global Logic ---
 function generateReflections(text, pillarId) {
@@ -383,6 +388,7 @@ window.switchTo = (v) => {
     if (v === 'alchemy' && State.alchemyPhase === 'final') {
         p.jewel = synthesizeNarrative(p);
     }
+    window.saveData();
     main.innerHTML = Views[v] ? Views[v]() : "View missing."; 
     window.scrollTo(0, 0); 
 };
@@ -392,6 +398,7 @@ function syncInput() {
     if (el) { 
         if (State.view === 'discovery') State.userData.pillars[State.pillarIndex].venting = el.value;
         if (State.view === 'alchemy' && State.alchemyPhase === 'probe') State.userData.pillars[State.pillarIndex].probeText = el.value;
+        window.saveData();
     }
 }
 
@@ -407,6 +414,7 @@ window.toggleAspiration = (term) => {
     const idx = p.selectedGems.indexOf(term);
     if (idx > -1) p.selectedGems.splice(idx, 1); else p.selectedGems.push(term);
     document.querySelectorAll(`.pattern-chip[data-term="${term}"]`).forEach(c => c.classList.toggle('active'));
+    window.saveData();
 };
 
 window.handleNext = () => {
@@ -422,7 +430,7 @@ window.handleNext = () => {
     }
 };
 
-window.updateJewel = (val) => { State.userData.pillars[State.pillarIndex].jewel = val; };
+window.updateJewel = (val) => { State.userData.pillars[State.pillarIndex].jewel = val; window.saveData(); };
 
 window.purgeSanctuary = () => {
     if (confirm("This will clear all local progress and force a fresh reload. Proceed?")) {
@@ -448,6 +456,10 @@ function getWelcomeView() {
         <p class="subtitle">A Voyage into the Primal Root of Reality.</p>
         <div style="display:flex; gap:1.5rem; justify-content:center; margin-top:2rem;">
             <button class="cta-btn" onclick="window.switchTo('science')">Enter the Sanctuary</button>
+            <button class="cta-btn" onclick="window.switchTo('aestheticProfile')" style="background:rgba(255,255,255,0.1); border:1px solid var(--glass-border);">Resume / Skip to Rituals</button>
+        </div>
+        <div style="margin-top:2rem;">
+            <button class="cta-btn" onclick="window.switchTo('meditationLibrary')" style="background:transparent; border:1px solid var(--primary); color:var(--primary);">📚 View Saved Meditations</button>
         </div>
     </div>`;
 }
